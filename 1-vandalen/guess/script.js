@@ -3,6 +3,7 @@
 window.onload = function(){
 	
 	var secret = Math.floor( Math.random() * 100)+1; // Detta tal behöver bytas ut mot ett slumpat tal.
+	var numberOfGuesses = 0;
 	
 	// I denna funktion ska du skriva koden för att hantera "spelet"
 	var guess = function(number){
@@ -11,32 +12,31 @@ window.onload = function(){
 			
 		// Plats för förändring.
 		
-		var numberOfGuesses = 0;
-
-		if (number < 1 || number > 100) {
-			numberOfGuesses++;
-			return [false, "Talet du gissat på är utanför det slutna intervallet 1-100."];
-		}
+		numberOfGuesses++;
 		
+		if (number < 1 || number > 100) {
+			return [false, "Talet du gissat på är utanför det slutna intervallet 1-100.", numberOfGuesses];
+		}
+			
 		else if (number == secret){
-			numberOfGuesses++;
 			return [true, "Grattis du vann! Det hemliga talet var " + secret + " och du behövde " + numberOfGuesses + " gissningar för att hitta det."];
 		}
 		
-		else if (number < secret) { //(0 < number < secret)
-			numberOfGuesses++;
-			return [false, "Det hemliga talet är högre!"];
+		else if (number < secret) { 
+			return [false, "Det hemliga talet är högre!", numberOfGuesses];
 		}
 		
-		else if (number > secret){ //(secret < number <= 100)
-			numberOfGuesses++;
-			return [false, "Det hemliga talet är lägre!"];
+		else if (number > secret){ 
+			return [false, "Det hemliga talet är lägre!", numberOfGuesses];
 		}
 		
 		else if (number < 1 || number > 100) {
-			return [false, "Talet du gissat på är utanför det slutna intervallet 1-100."];
-		};
-
+			return [false, "Talet du gissat på är utanför det slutna intervallet 1-100. Gissa igen!", numberOfGuesses];
+		}
+		
+		
+		
+		
 		// Returnera exempelvis: 
 		// [true, "Grattis du vann! Det hemliga talet var X och du behövde Y gissningar för att hitta det."]
 		// [false, "Det hemliga talet är högre!"]
