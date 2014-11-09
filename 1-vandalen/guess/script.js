@@ -13,7 +13,7 @@ window.onload = function(){
 		var numberOfGuesses;
 		
 		if (number === secret){
-			return [true, "Grattis du vann! Det hemliga talet var " secret "och du behövde " numberOfGuesses "gissningar för att hitta det."];
+			return [true, "Grattis du vann! Det hemliga talet var " + secret + "och du behövde " + numberOfGuesses + "gissningar för att hitta det."];
 		}
 		
 		else if (0 < number < secret){
