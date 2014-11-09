@@ -34,6 +34,9 @@ window.onload = function(){
 			return [false, "Talet du gissat på är utanför det slutna intervallet 1-100. Gissa igen!", numberOfGuesses];
 		}
 		
+		else {
+			return [false, "Det du angett kan inte tolkas som ett tal.", numberOfGuesses]
+		}
 		
 		
 		
