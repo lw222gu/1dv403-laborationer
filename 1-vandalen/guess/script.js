@@ -35,7 +35,7 @@ window.onload = function(){
 		}
 		
 		else {
-			return [false, "Det du angett kan inte tolkas som ett tal.", numberOfGuesses]
+			return [false, "Det du angett kan inte tolkas som ett tal.", numberOfGuesses];
 		}
 		
 		
