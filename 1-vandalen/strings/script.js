@@ -13,57 +13,29 @@ window.onload = function(){
 		var i = 0;
 		var newStr = "";
 	
-		for(i = 0; i < str.length; i++){
-
-			var char = str[i];
-			
-			
-			if(str[i] === str[i].toLowerCase()){
-				char = str[i].toUpperCase();
-
-			}
-			
-			else if(str[i] === str[i].toUpperCase()){
-				char = str[i].toLowerCase();
-			}
-			
-			newStr = newStr + char;
+		if(str.length === 0){
+			return["Du måste ange minst ett tecken!"];
 		}
-		
-		return newStr;
 
-		
+		else {
 			
-		/*
-		while (i < length){
-			
-			var char = convStr[i];
-			
-			if(char == char.toLowerCase()){
-				char.toUpperCase();
+			for(i = 0; i < str.length; i++){
+	
+				var char = str[i];
+				
+				if(str[i] === str[i].toLowerCase()){
+					char = str[i].toUpperCase();
+				}
+				
+				else if(str[i] === str[i].toUpperCase()){
+					char = str[i].toLowerCase();
+				}
+				
 				newStr = newStr + char;
-				i++;
 			}
 			
-			else if(char == char.toUpperCase()){
-				char.toLowerCase();
-				newStr = newStr + char;
-				i++;
-			}
-			
-			//else {
-//				throw new exception("Du måste ange minst en bokstav.");
-			//}
-			
-			
-		}
-		
-		return newStr;
-		
-		*/
-	
-	
-		
+			return newStr;
+		}	
 
 	};
 	// ------------------------------------------------------------------------------
