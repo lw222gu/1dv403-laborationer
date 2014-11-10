@@ -9,27 +9,61 @@ window.onload = function(){
 		// Vid fel, kasta ett undantag med ett meddelande till användaren. 
 		
 		str = str.replace(/A/gi, "#");
+
 		var i = 0;
-		
-		for (i = 0; i <= str.length; i++){
+		var newStr = "";
+	
+		for(i = 0; i < str.length; i++){
+
+			var char = str[i];
 			
-			if(str[i] == str[i].toLowerCase()){
-				return[str[i] = str[i].toUpperCase()];
+			
+			if(str[i] === str[i].toLowerCase()){
+				char = str[i].toUpperCase();
+
 			}
 			
-			else if(str[i] == str[i].toUpperCase()){
-				return[str[i] = str[i].toLowerCase()];
+			else if(str[i] === str[i].toUpperCase()){
+				char = str[i].toLowerCase();
 			}
 			
-			else {
-//				throw new exception("Du måste ange minst en bokstav.");
-			}
+			newStr = newStr + char;
 		}
+		
+		return newStr;
 
-
-
-
-
+		
+			
+		/*
+		while (i < length){
+			
+			var char = convStr[i];
+			
+			if(char == char.toLowerCase()){
+				char.toUpperCase();
+				newStr = newStr + char;
+				i++;
+			}
+			
+			else if(char == char.toUpperCase()){
+				char.toLowerCase();
+				newStr = newStr + char;
+				i++;
+			}
+			
+			//else {
+//				throw new exception("Du måste ange minst en bokstav.");
+			//}
+			
+			
+		}
+		
+		return newStr;
+		
+		*/
+	
+	
+		
 
 	};
 	// ------------------------------------------------------------------------------
