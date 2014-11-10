@@ -7,7 +7,24 @@ window.onload = function(){
 		// Plats för förändring.		
 		// Returnera den konverterade strängen.
 		// Vid fel, kasta ett undantag med ett meddelande till användaren. 
-	
+		
+		str = str.replace(/A/gi, "#");
+		var i = 0;
+		
+		for (i = 0; i <= str.length; i++){
+			
+			if(str[i] == str[i].toLowerCase()){
+				return[str[i] = str[i].toUpperCase()];
+			}
+			
+			else if(str[i] == str[i].toUpperCase()){
+				return[str[i] = str[i].toLowerCase()];
+			}
+			
+			else {
+//				throw new exception("Du måste ange minst en bokstav.");
+			}
+		}
 
 
 
