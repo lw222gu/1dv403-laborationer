@@ -14,11 +14,23 @@ window.onload = function(){
 			birthday.setFullYear(now.getFullYear());
 			
 
-			var daysLeft = Math.round((birthday.getTime()-now.getTime())/(1000*60*60*24));
+			var daysLeft = Math.ceil((birthday.getTime()-now.getTime())/(1000*60*60*24));
 			
-			return daysLeft;
-			
+			if (daysLeft === 0){
+				return 0;
+			}
 
+			else if (daysLeft === 1){
+				return 1;
+			}
+			
+			else if (daysLeft < 0){
+				birthday.setFullYear(now.getFullYear()+1);
+				daysLeft = Math.ceil((birthday.getTime()-now.getTime())/(1000*60*60*24));
+ 			}
+ 			
+ 			return daysLeft;
+		
 
 	};
 	// ------------------------------------------------------------------------------
