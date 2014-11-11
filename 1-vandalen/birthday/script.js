@@ -12,26 +12,16 @@ window.onload = function(){
 			var birthday = new Date(date);
 			var now = new Date();
 			birthday.setFullYear(now.getFullYear());
+			now.setHours(0);
 			
-
-			var daysLeft = Math.ceil((birthday.getTime()-now.getTime())/(1000*60*60*24));
-			
-			if (daysLeft === 0){
-				return 0;
-			}
-
-			else if (daysLeft === 1){
-				return 1;
-			}
-			
-			else if (daysLeft < 0){
+			if (birthday < now){
 				birthday.setFullYear(now.getFullYear()+1);
-				daysLeft = Math.ceil((birthday.getTime()-now.getTime())/(1000*60*60*24));
  			}
  			
- 			return daysLeft;
-		
+ 			var daysLeft = Math.floor((birthday.getTime()-now.getTime())/(1000*60*60*24));
 
+ 			return daysLeft;
+ 		
 	};
 	// ------------------------------------------------------------------------------
 
