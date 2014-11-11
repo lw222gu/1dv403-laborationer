@@ -9,16 +9,15 @@ window.onload = function(){
 
 			// Din kod här.
 			
-			var birthday = date.getTime();
-			var now = new Date(today){
-				var day = now.getDate();
-				var month = now.getMonth() +1;
-				var year = now.getFullYear();
-				var today = (year + "-" + month + "-" + day).getTime();
-			}
-			
+			var birthday = new Date(date);
+			var now = new Date();
+			birthday.setFullYear(now.getFullYear());
 			
 
+			var daysLeft = Math.round((birthday.getTime()-now.getTime())/(1000*60*60*24));
+			
+			return daysLeft;
+			
 
 
 	};
