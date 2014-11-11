@@ -8,7 +8,16 @@ window.onload = function(){
 
 
 			// Din kod här.
-
+			
+			var birthday = date.getTime();
+			var now = new Date(today){
+				var day = now.getDate();
+				var month = now.getMonth() +1;
+				var year = now.getFullYear();
+				var today = (year + "-" + month + "-" + day).getTime();
+			}
+			
+			
 
 
 
