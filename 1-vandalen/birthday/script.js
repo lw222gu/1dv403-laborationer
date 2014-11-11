@@ -11,6 +11,11 @@ window.onload = function(){
 			
 			var birthday = new Date(date);
 			var now = new Date();
+			
+			if (isNaN(birthday)){
+				throw new Error ("Du måste ange ett datum.");
+			}
+			
 			birthday.setFullYear(now.getFullYear());
 			now.setHours(0);
 			
