@@ -7,35 +7,28 @@ var makePerson = function(persArr){
 	var names = [];
 	var ages = [];
 
-	names = persArr.map(function(name){
-		return name.names;
-	});
+	function sortOutElements(element, i, arr){
+		names[i] = element.name;
+		ages[i] = element.age;
+	}
 	
-	ages = persArr.map(function(age){
-		return age.ages;
-	});
+	persArr.forEach(sortOutElements);
 
 	names.sort();
+	var nameStr = names.join(", ");
+
 	ages.sort();
-		
-	var namesAsString = names.join(", ");
-	namesAsString.toString();
-
 	
-//	persArr.forEach(function(name){
-//		return names;
-//	});
-	
-//	persArr.forEach(function(age){
-//		return ages.age;
-//	});
-
+	var totalAge = ages.reduce(function(prevValue, element, i, arr){
+		return prevValue + element;
+		})
 	
 	var result = {
 		
 	minAge: ages[0],
 	maxAge: ages[ages.length-1],
-	names: namesAsString,
+	averageAge: Math.round(totalAge / ages.length),
+	names: nameStr,
 	
 	};
 
