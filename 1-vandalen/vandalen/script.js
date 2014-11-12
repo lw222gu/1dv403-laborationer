@@ -3,17 +3,31 @@
 var makePerson = function(persArr){
 
 	// Din kod här...
+	
+
 
 	var names = [];
 	var ages = [];
 
+	
 	function sortOutElements(element, i){
-		names[i] = element.name;
-		ages[i] = element.age;
+		
+		if(typeof element.name !== "string"){
+			throw new Error ("Namnet saknas.");
+		}
+
+		else if(typeof element.age === isNaN){
+			throw new Error ("Åldern måste vara ett heltal.");
+		}
+
+		else{
+			names[i] = element.name;
+			ages[i] = element.age;
+		}
 	}
 	
 	persArr.forEach(sortOutElements);
-
+	
 	names.sort(function(a, b){
 		return a.localeCompare(b)});
 	var nameStr = names.join(", ");
@@ -22,7 +36,7 @@ var makePerson = function(persArr){
 	
 	var totalAge = ages.reduce(function(prevValue, element){
 		return prevValue + element;
-		})
+		});
 	
 	var result = {
 		
