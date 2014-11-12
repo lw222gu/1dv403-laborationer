@@ -13,7 +13,7 @@ var makePerson = function(persArr){
 	function sortOutElements(element, i){
 		
 		if(typeof element.name !== "string"){
-			throw new Error ("Namnet saknas.");
+			throw new Error ("Kan inte tolkas som ett namn.");
 		}
 
 		else if(typeof element.age === isNaN){
@@ -27,24 +27,25 @@ var makePerson = function(persArr){
 	}
 	
 	persArr.forEach(sortOutElements);
+
 	
 	names.sort(function(a, b){
 		return a.localeCompare(b)});
 	var nameStr = names.join(", ");
+
 
 	ages.sort();
 	
 	var totalAge = ages.reduce(function(prevValue, element){
 		return prevValue + element;
 		});
+
 	
 	var result = {
-		
 	minAge: ages[0],
 	maxAge: ages[ages.length-1],
 	averageAge: Math.round(totalAge / ages.length),
 	names: nameStr,
-	
 	};
 
     return result; 
