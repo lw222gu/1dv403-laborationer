@@ -5,7 +5,25 @@ var makePerson = function(persArr){
 	// Din kod här...
 	
 
+	var ages = [];
+	var names = [];
 
+
+	ages = persArr.map(function(person){return person.age});
+	names = persArr.map(function(person){return person.name});
+	
+	if(typeof name !== "string"){
+		throw new Error ("Kan inte tolkas som ett namn.");
+	}
+
+	else if(typeof ages.age === isNaN){
+		throw new Error ("Åldern måste vara ett heltal.");
+	}
+	
+
+
+
+/*
 	var names = [];
 	var ages = [];
 
@@ -27,7 +45,7 @@ var makePerson = function(persArr){
 	}
 	
 	persArr.forEach(sortOutElements);
-
+*/
 	
 	names.sort(function(a, b){
 		return a.localeCompare(b)});
