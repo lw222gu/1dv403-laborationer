@@ -1,0 +1,5 @@
+/* Message constructor */
+
+function Message(){
+    
+}
