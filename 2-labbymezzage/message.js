@@ -1,3 +1,4 @@
+"use strict";
 /* Message constructor */
 
 function Message(message, date){
@@ -9,7 +10,7 @@ function Message(message, date){
     };
     
     this.setText = function(_text){
-        message = text;
+        message = _text;
     };
     
     this.getDate = function(){
@@ -22,14 +23,16 @@ function Message(message, date){
 }
 
 Message.prototype.toString = function(){
-    return this.getText()+" ("+this.getDate()+")";
+    // Returnerar objektet som en sträng
+    return (this.getText() + " (" + this.getDate() + ")");
 };
 
-Message.prototype.getHTMLText = function(_text){
+Message.prototype.getHTMLText = function(text){
+    // Hämtar texten med \n utbytt mot <br/>
     
 };
 
 Message.prototype.getDateText = function(_date){
-    
+    // Hämtar datumet? Vad gör denna egentligen. Finns med i exemplet men inte listan över funktioner.
 };
 
