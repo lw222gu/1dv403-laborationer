@@ -4,48 +4,26 @@ var makePerson = function(persArr){
 
 	// Din kod här...
 	
+	var ages;
+	var names;
 
-	var ages = [];
-	var names = [];
-
-
-	ages = persArr.map(function(person){return person.age});
-	names = persArr.map(function(person){return person.name});
-	
-	if(typeof name !== "string"){
-		throw new Error ("Kan inte tolkas som ett namn.");
-	}
-
-	else if(typeof ages.age === isNaN){
-		throw new Error ("Åldern måste vara ett heltal.");
-	}
-	
-
-
-
-/*
-	var names = [];
-	var ages = [];
-
-	
-	function sortOutElements(element, i){
+	ages = persArr.map(function(person){
+	/*	if(typeof isNaN(person.age)){
+			throw new TypeError ("Åldern måste vara ett heltal.");
+		}	
+	*/	
+		return person.age;
 		
-		if(typeof element.name !== "string"){
-			throw new Error ("Kan inte tolkas som ett namn.");
-		}
-
-		else if(typeof element.age === isNaN){
-			throw new Error ("Åldern måste vara ett heltal.");
-		}
-
-		else{
-			names[i] = element.name;
-			ages[i] = element.age;
-		}
-	}
+	});
 	
-	persArr.forEach(sortOutElements);
-*/
+	names = persArr.map(function(person){
+	/*	if(typeof person.name !== "string"){
+			throw new TypeError ("Kan inte tolkas som ett namn.");
+		}
+	*/	
+		return person.name;
+		
+	});
 	
 	names.sort(function(a, b){
 		return a.localeCompare(b)});
@@ -66,7 +44,8 @@ var makePerson = function(persArr){
 	names: nameStr,
 	};
 
-    return result; 
+    return result;
+	
 };
 
     var data = [{name: "John Häggerud", age: 37}, {name: "Johan Leitet", age: 36}, {name: "Mats Loock", age: 46}];
