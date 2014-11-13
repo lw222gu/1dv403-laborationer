@@ -11,9 +11,9 @@ window.onload = function(){
 //			if (new Date(date) === null){
 //				throw new Error ("Du måste ange ett datum.");
 //			}
-			if (! Date.parse(date.toString())){
-				throw new Error ("Du måste ange ett datum enligt ÅÅÅÅ-MM-DD.");
-			}
+//			if (! Date.parse(date.toString())){
+//				throw new Error ("Du måste ange ett datum enligt ÅÅÅÅ-MM-DD.");
+//			}
 			
 		
 			// Din kod här.
