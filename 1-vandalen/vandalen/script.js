@@ -8,10 +8,10 @@ var makePerson = function(persArr){
 	var names;
 
 	ages = persArr.map(function(person){
-	/*	if(typeof isNaN(person.age)){
+		if(typeof isNaN(person.age)){
 			throw new TypeError ("Åldern måste vara ett heltal.");
 		}
-	*/	
+
 		return person.age;
 		
 	});
@@ -48,7 +48,7 @@ var makePerson = function(persArr){
 	
 };
 
-    var data = [{name: 37, age: 37}, {name: "Johan Leitet", age: 36}, {name: "Mats Loock", age: 46}];
+    var data = [{name: "John Häggerud", age: 37}, {name: "Johan Leitet", age: 36}, {name: "Mats Loock", age: 46}];
 
     var result = makePerson(data);
 
