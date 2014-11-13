@@ -6,14 +6,23 @@ window.onload = function(){
 	var birthday = function(date){
 		
 
-
+			
+//			new Date(); // null
+//			if (new Date(date) === null){
+//				throw new Error ("Du måste ange ett datum.");
+//			}
+			if (! Date.parse(date.toString())){
+				throw new Error ("Du måste ange ett datum enligt ÅÅÅÅ-MM-DD.");
+			}
+			
+		
 			// Din kod här.
 			
 			var birthday = new Date(date);
 			var now = new Date();
 			
 			if (isNaN(birthday)){
-				throw new Error ("Du måste ange ett datum.");
+				throw new Error ("Du måste ange ett datum enligt ÅÅÅÅ-MM-DD.");
 			}
 			
 			birthday.setFullYear(now.getFullYear());
@@ -43,6 +52,7 @@ window.onload = function(){
 		p.classList.remove( "error");
 
 		try {
+			console.log(typeof input.value);
 			var answer = birthday(input.value) // Läser in texten från textrutan och skickar till funktionen "convertString"
 			var message;
 			switch (answer){

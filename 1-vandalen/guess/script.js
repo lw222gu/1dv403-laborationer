@@ -30,10 +30,6 @@ window.onload = function(){
 			return [false, "Det hemliga talet är lägre!", numberOfGuesses];
 		}
 		
-		else if (number < 1 || number > 100) {
-			return [false, "Talet du gissat på är utanför det slutna intervallet 1-100. Gissa igen!", numberOfGuesses];
-		}
-		
 		else {
 			return [false, "Det du angett kan inte tolkas som ett tal.", numberOfGuesses];
 		}
