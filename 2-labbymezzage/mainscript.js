@@ -8,12 +8,12 @@ var mezzageApp = {
         var button = document.querySelector(".button");
         button.onclick = function(){
         
-        var mess = new Message(Message.prototype.getHTMLText(), Message.prototype.getDateText());
+        var mess = new Message(message, date);
         mezzageApp.messages.push(mess);
         
         console.log(mezzageApp.messages);
 
-        
+ /*       
         for(var i = 0; i <= mezzageApp.messages.length - 1; i++){
             
             if (mezzageApp.messages.length == 1){
@@ -25,7 +25,7 @@ var mezzageApp = {
 //            li.innerHTML = Message.prototype.toString();
             ul.appendChild(li);
         }
-        
+*/ 
  //       return false;
         };
         
