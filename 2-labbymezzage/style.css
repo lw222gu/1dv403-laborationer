@@ -1,0 +1,43 @@
+body {
+    font-size: 1em;
+    padding-top:50px;
+}
+
+#container {
+    max-width: 350px;
+    margin: 0 auto 0 auto;
+    background-color:#8C1C3A;
+    overflow: auto;
+    padding:25px;
+    border-radius:10px 10px 0px 10px;
+}
+
+main {
+    width:inherit;
+    background-color:#FFF;
+    margin-top:25px;
+    padding:10px;
+    border-radius:10px 10px 0px 10px;
+}
+
+h1 {
+    font-family: 'Shadows Into Light Two', cursive;
+    color: #FFF ;
+    margin:0px;
+}
+
+.textbox {
+    width: 307px;
+    height:100px;
+    padding:10px;
+    margin-bottom:0px;
+    border-width:1px;
+    border-color:#591225;
+    border-style:solid;
+    border-radius:10px 10px 0px 10px;
+
+}
+
+.button {
+    margin-right:10px;
+}

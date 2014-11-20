@@ -7,13 +7,14 @@ var mezzageApp = {
     init: function(e){ 
         
         var mess = new Message("Testmeddelande", new Date());
-        alert(mess);
+/*      alert(mess);
         alert(mess.getText());
         mess.setText("En annan text att testa");
         alert(mess);
         
         mezzageApp.messages.push(mess, "Kiwi");
         alert(mezzageApp.messages[1]);
+*/
     }
 };
 
