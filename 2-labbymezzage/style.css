@@ -1,15 +1,16 @@
 body {
     font-size: 1em;
     padding-top:50px;
+    font-family:Arial, sans-serif;
 }
 
 #container {
     max-width: 350px;
     margin: 0 auto 0 auto;
-    background-color:#8C1C3A;
+    background-color:#B1E8C0;
     overflow: auto;
     padding:25px;
-    border-radius:10px 10px 0px 10px;
+    border-radius:15px 15px 0px 15px;
 }
 
 main {
@@ -18,26 +19,39 @@ main {
     margin-top:25px;
     padding:10px;
     border-radius:10px 10px 0px 10px;
+    overflow:auto;
+
 }
 
 h1 {
     font-family: 'Shadows Into Light Two', cursive;
-    color: #FFF ;
+    color: #000 ;
     margin:0px;
 }
 
 .textbox {
-    width: 307px;
+    resize:none;
+    box-sizing:border-box;
+    width: 100%;
+    overflow:auto;
     height:100px;
     padding:10px;
-    margin-bottom:0px;
+    margin-bottom:5px;
     border-width:1px;
-    border-color:#591225;
+    border-color:#000;
     border-style:solid;
     border-radius:10px 10px 0px 10px;
-
+    box-shadow:3px 3px 0px rgb(220, 220, 220);
 }
 
 .button {
-    margin-right:10px;
+    float:right;
+    padding:10px;
+    border-radius:8px 8px 0px 8px;
+    border:none;
+    color:#FFF;
+    background-color:#000;
+    cursor: pointer;
+    box-shadow:3px 3px 0px rgb(220, 220, 220);
+    font-size:0.7em;
 }
