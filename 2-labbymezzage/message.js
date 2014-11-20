@@ -3,7 +3,7 @@
 
 function Message(message, date){
     
-    var text;
+ //   var text;
     
     this.getText = function(){
         return message;
@@ -29,6 +29,7 @@ Message.prototype.toString = function(){
 
 Message.prototype.getHTMLText = function(text){
     // Hämtar texten med \n utbytt mot <br/>
+    // return this.getText();
     
 };
 

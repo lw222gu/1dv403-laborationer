@@ -8,9 +8,10 @@ var makePerson = function(persArr){
 	var names;
 
 	ages = persArr.map(function(person){
-		if(typeof isNaN(person.age)){
-			throw new TypeError ("Åldern måste vara ett heltal.");
-		}
+	
+	//	if(typeof isNaN(person.age)){
+	//		throw new TypeError ("Åldern måste vara ett heltal.");
+	//	}
 
 		return person.age;
 		
@@ -26,8 +27,8 @@ var makePerson = function(persArr){
 	});
 	
 	names.sort(function(a, b){
-		return a.localeCompare(b)});
-	var nameStr = names.join(", ");
+		return a.localeCompare(b);});
+	names = names.join(", ");
 
 
 	ages.sort();
@@ -41,7 +42,7 @@ var makePerson = function(persArr){
 	minAge: ages[0],
 	maxAge: ages[ages.length-1],
 	averageAge: Math.round(totalAge / ages.length),
-	names: nameStr,
+	names: names,
 	};
 
     return result;
