@@ -27,13 +27,15 @@ Message.prototype.toString = function(){
     return (this.getText() + " (" + this.getDate() + ")");
 };
 
-Message.prototype.getHTMLText = function(text){
+Message.prototype.getHTMLText = function(){
     // Hämtar texten med \n utbytt mot <br/>
-    // return this.getText();
+    var text = this.getText();
+    return text;
     
 };
 
-Message.prototype.getDateText = function(_date){
-    // Hämtar datumet? Vad gör denna egentligen. Finns med i exemplet men inte listan över funktioner.
+Message.prototype.getDateText = function(){
+    var dateText = this.getDate();
+    return dateText;
 };
 
