@@ -32,7 +32,7 @@ Message.prototype.getHTMLText = function(){
 };
 
 Message.prototype.getDateText = function(){
-    var dateText = this.getDate();
+    var dateText = "Inlägget postades " + this.getDate().getFullYear() + "-" + (this.getDate().getMonth()+1) + "-" + this.getDate().getDate();
     return dateText;
 };
 

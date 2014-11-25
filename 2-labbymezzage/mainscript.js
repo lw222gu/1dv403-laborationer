@@ -21,19 +21,18 @@ var mezzageApp = {
             
             var message = document.getElementById("textbox").value;
 
-//          var date = Message.prototype.getDateText();
-
             var mess = new Message(message, new Date());
             mezzageApp.messages.push(mess);
             console.log(mezzageApp.messages);
         
             for (mess in mezzageApp.messages){
-                li = document.createElement("li");
                 var text = document.createElement("p");
-//                text.innerHTML = message;
-                text.innerHTML = mezzageApp.messages[mess].getHTMLText(message);
+                text.className = "messagetext";
                 var date = document.createElement("p");
-                date.innerHTML = mezzageApp.messages[mess].getDate();
+                date.className = "datetext"
+                li = document.createElement("li");
+                text.innerHTML = mezzageApp.messages[mess].getHTMLText(message);
+                date.innerHTML = mezzageApp.messages[mess].getDateText();
                 li.appendChild(text);
                 li.appendChild(date);
             }

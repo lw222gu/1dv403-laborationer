@@ -37,13 +37,25 @@ ul {
 
 li {
     padding:10px;
-    font-size:0.7em;
+    font-family: 'Shadows Into Light Two', cursive;
+    font-size:1em;
     color:#000;
     background-color:rgba(240, 240, 240, 0.5);
     border-radius:10px 10px 0px 10px;
     box-shadow:3px 3px 0px rgba(220, 220, 220, 0.7);
     margin-bottom: 6px;
+}
 
+p {
+    margin-top:0px;
+    margin-bottom:10px;
+}
+
+.datetext {
+    font-family:Arial, sans-serif;
+    font-size:0.7em;
+    text-align:right;
+    margin-bottom:5px;
 }
 
 #textbox {
