@@ -38,6 +38,8 @@ var mezzageApp = {
             }
         
             ul.appendChild(li);
+            var textbox = document.querySelector("#textbox");
+            textbox.value = "";
 
         };
 
