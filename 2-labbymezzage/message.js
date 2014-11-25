@@ -16,7 +16,7 @@ function Message(message, date){
     };
     
     this.setDate = function(_date){
-        date = new Date();
+        date = _date;
     };
 }
 
@@ -27,13 +27,12 @@ Message.prototype.toString = function(){
 
 Message.prototype.getHTMLText = function(){
     // Hämtar texten med \n utbytt mot <br/>
-    var text = this.getText();
+    var text = this.getText().replace(/\n/g, "<br />");
     return text;
-    
 };
 
-Message.prototype.getDateText = function(_date){
-    var dateText = Message.getDate();
+Message.prototype.getDateText = function(){
+    var dateText = this.getDate();
     return dateText;
 };
 
