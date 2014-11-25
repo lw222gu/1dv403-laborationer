@@ -5,32 +5,39 @@ var mezzageApp = {
     messages: [],
 
     init: function(e){ 
-        var button = document.querySelector(".button");
+        
+        var divMessages = document.getElementById("messages");
+        var ul = document.createElement("ul");
+        var clickedOnce = false;
+        var li;
+        var button = document.querySelector("#button");
+    
         button.onclick = function(){
-        
-        var mess = new Message(message, date);
-        mezzageApp.messages.push(mess);
-        
-        console.log(mezzageApp.messages);
 
- /*       
-        for(var i = 0; i <= mezzageApp.messages.length - 1; i++){
-            
-            if (mezzageApp.messages.length == 1){
-                var ul = document.createElement("ul");
-                document.getElementById("messages").appendChild(ul);
+            if(!clickedOnce){
+                divMessages.appendChild(ul);        
+                clickedOnce = true;
             }
             
-            var li = document.createElement("li");
-//            li.innerHTML = Message.prototype.toString();
+            var mess = new Message(Message.message, Message.date);
+            mezzageApp.messages.push(mess);
+            console.log(mezzageApp.messages);
+        
+            
+        
+            for (mess in mezzageApp.messages){
+                li = document.createElement("li");
+            }
+        
             ul.appendChild(li);
-        }
-*/ 
- //       return false;
+
+        
+    
+
         };
-        
-        
-        
+
+            
+                    
 //        sendMess.addEventListener("click", function(){
 //           var mess = new Message();
 //        });
@@ -48,7 +55,6 @@ var mezzageApp = {
     */
     }
 };
-
 
 window.onload = mezzageApp.init; //pekar på metoden init som kommer köras när sidan laddats
 

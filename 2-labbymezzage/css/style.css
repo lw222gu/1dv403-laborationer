@@ -62,7 +62,7 @@ li {
     background-color:rgba(240, 240, 240, 0.5);
 }
 
-.button {
+#button {
     float:right;
     padding:10px;
     border-radius:8px 8px 0px 8px;

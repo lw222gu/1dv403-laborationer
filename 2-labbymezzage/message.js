@@ -3,8 +3,6 @@
 
 function Message(message, date){
     
- //   var text;
-    
     this.getText = function(){
         return message;
     };
