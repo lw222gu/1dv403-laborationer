@@ -46,7 +46,7 @@ li {
 
 }
 
-.textbox {
+#textbox {
     resize:none;
     box-sizing:border-box;
     width: 100%;

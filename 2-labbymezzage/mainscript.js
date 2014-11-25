@@ -10,6 +10,7 @@ var mezzageApp = {
         var ul = document.createElement("ul");
         var clickedOnce = false;
         var li;
+        var p;
         var button = document.querySelector("#button");
     
         button.onclick = function(){
@@ -19,23 +20,26 @@ var mezzageApp = {
                 clickedOnce = true;
             }
             
-            var mess = new Message(Message.message, Message.date);
+            var message = document.getElementById("textbox").value;
+//          var date = Message.prototype.getDateText();
+
+            var mess = new Message(message, Message.date);
             mezzageApp.messages.push(mess);
             console.log(mezzageApp.messages);
         
-            
-        
             for (mess in mezzageApp.messages){
                 li = document.createElement("li");
+                p = document.createElement("p");
+                p.innerHTML = message;
+                li.appendChild(p);
             }
         
             ul.appendChild(li);
 
-        
-    
-
         };
 
+            
+//            Message.message = document.getElementById("#textbox").value;
             
                     
 //        sendMess.addEventListener("click", function(){
