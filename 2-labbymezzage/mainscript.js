@@ -34,15 +34,17 @@ var mezzageApp = {
         for (var i = 0; i < mezzageApp.messages.length; ++i){
             mezzageApp.renderMessage(i);
             textbox.value = "";
-            mezzageApp.countMessages(i);
         }
+            mezzageApp.countMessages(i);
         
     },
     
     countMessages: function(count){
-        var counter = count;
-        var counterText;
+
+        var counter = count-1;
         counter++;
+
+        var counterText;
         counterText = document.getElementById("counter").innerHTML = "Antal meddelanden: " + counter;
 
     },
@@ -74,8 +76,16 @@ var mezzageApp = {
         
         myMessages.appendChild(oneMessage);
         
+        removeMessage.onclick = function(){
+            mezzageApp.removeActualMessage(messageID);
+        };
         
-        
+    },
+    
+    removeActualMessage: function(removedMessage){
+        mezzageApp.messages.splice(removedMessage, 1);
+        mezzageApp.renderMessages();
+
     },
 
 };
