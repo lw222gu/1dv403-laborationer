@@ -7,20 +7,30 @@ var mezzageApp = {
     init: function(e){ 
         
         var button = document.querySelector("#button");
+        var textarea = document.getElementById("textbox");
         document.getElementById("counter").innerHTML = "Antal meddelanden: 0";
 
         button.onclick = function(){
-
-            var message = document.getElementById("textbox").value;
-
-            var mess = new Message(message, new Date());
-            mezzageApp.messages.push(mess);
-            console.log(mezzageApp.messages);
-            
-            mezzageApp.renderMessages(mezzageApp.messages[mezzageApp.messages.length-1]);
-
+            mezzageApp.createMessage();
+        };
+        
+        textarea.onkeypress = function(e){
+            if(e.keyCode == 13 && !e.shiftKey){
+                    e.preventDefault();
+                    mezzageApp.createMessage();
+            }
         };
 
+    },
+    
+    createMessage: function(){
+        var message = document.getElementById("textbox").value;
+
+        var mess = new Message(message, new Date());
+        mezzageApp.messages.push(mess);
+        console.log(mezzageApp.messages);
+            
+        mezzageApp.renderMessages(mezzageApp.messages[mezzageApp.messages.length-1]);
     },
     
     
@@ -64,20 +74,30 @@ var mezzageApp = {
         var date = document.createElement("footer");
         date.className = "datetext";
         date.innerHTML = mezzageApp.messages[messageID].getDateText();
-
+        
         var removeMessage = document.createElement("img");
         removeMessage.className = "removemessage";
         removeMessage.setAttribute("src", "css/pics/remove_message.svg");
         removeMessage.setAttribute("alt", "Radera meddelandet");
         
+        var aRemoveMessage = document.createElement("a");
+        aRemoveMessage.setAttribute("href", "#");
+
+        aRemoveMessage.appendChild(removeMessage);
+        
         var messageTime = document.createElement("img");
         messageTime.className = "messagetime";
         messageTime.setAttribute("src", "css/pics/message_time.svg");
         messageTime.setAttribute("alt", "När skapades meddelandet?");
+        
+        var aMessageTime = document.createElement("a");
+        aMessageTime.setAttribute("href", "#");
+        
+        aMessageTime.appendChild(messageTime);
 
         oneMessage.appendChild(text);
-        oneMessage.appendChild(messageTime);
-        oneMessage.appendChild(removeMessage);
+        oneMessage.appendChild(aMessageTime);
+        oneMessage.appendChild(aRemoveMessage);
         oneMessage.appendChild(date);
         
         myMessages.appendChild(oneMessage);
