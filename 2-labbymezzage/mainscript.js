@@ -101,9 +101,11 @@ var mezzageApp = {
     },
     
     removeActualMessage: function(removedMessage){
+        var control = confirm("Är du säker på att du vill ta bort meddelandet?");
+        if(control === true){
         mezzageApp.messages.splice(removedMessage, 1);
         mezzageApp.renderMessages();
-
+        }
     },
 
 };
