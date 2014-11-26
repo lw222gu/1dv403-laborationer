@@ -3,47 +3,65 @@
 var mezzageApp = {
     
     messages: [],
-
+    
     init: function(e){ 
         
-        var divMessages = document.getElementById("messages");
-        var ul = document.createElement("ul");
-        var clickedOnce = false;
-        var li;
         var button = document.querySelector("#button");
-    
+
         button.onclick = function(){
 
-            if(!clickedOnce){
-                divMessages.appendChild(ul);        
-                clickedOnce = true;
-            }
-            
             var message = document.getElementById("textbox").value;
 
             var mess = new Message(message, new Date());
             mezzageApp.messages.push(mess);
             console.log(mezzageApp.messages);
-        
-            for (mess in mezzageApp.messages){
-                var text = document.createElement("p");
-                text.className = "messagetext";
-                var date = document.createElement("p");
-                date.className = "datetext"
-                li = document.createElement("li");
-                text.innerHTML = mezzageApp.messages[mess].getHTMLText(message);
-                date.innerHTML = mezzageApp.messages[mess].getDateText();
-                li.appendChild(text);
-                li.appendChild(date);
-            }
-        
-            ul.appendChild(li);
-            var textbox = document.querySelector("#textbox");
-            textbox.value = "";
+            
+            mezzageApp.renderMessages(mezzageApp.messages[mezzageApp.messages.length-1]);
 
         };
 
-            
+    },
+    
+    
+    renderMessages: function(){
+
+        document.getElementById("messages").innerHTML = "";
+        
+        for (var i = 0; i < mezzageApp.messages.length; ++i){
+            mezzageApp.renderMessage(i);
+        }
+    },
+    
+    
+    renderMessage: function(messageID){
+        
+        var myMessages = document.getElementById("messages");
+        var oneMessage = document.createElement("div");
+        oneMessage.className = "message";
+        var text = document.createElement("p");
+        text.className = "messagetext";
+        var date = document.createElement("footer");
+        date.className = "datetext";
+
+        text.innerHTML = mezzageApp.messages[messageID].getHTMLText();
+        date.innerHTML = mezzageApp.messages[messageID].getDateText();
+        oneMessage.appendChild(text);
+        oneMessage.appendChild(date);
+        
+        myMessages.appendChild(oneMessage);        
+
+        var textbox = document.querySelector("#textbox");
+        textbox.value = "";
+        
+    },
+
+};
+
+window.onload = mezzageApp.init; //pekar på metoden init som kommer köras när sidan laddats
+
+
+
+
 //            Message.message = document.getElementById("#textbox").value;
             
                     
@@ -62,9 +80,32 @@ var mezzageApp = {
         alert(mezzageApp.messages[1]);
         console.log(mess);
     */
-    }
-};
-
-window.onload = mezzageApp.init; //pekar på metoden init som kommer köras när sidan laddats
-
-
+    
+ 
+ 
+ 
+ //Ul istället för div
+ /*
+            if(!clickedOnce){
+                divMessages.appendChild(ul);        
+                clickedOnce = true;
+            }
+ */      
+    
+    /*
+            for (mess in mezzageApp.messages){
+                var text = document.createElement("p");
+                text.className = "messagetext";
+                var date = document.createElement("p");
+                date.className = "datetext";
+                li = document.createElement("li");
+                text.innerHTML = mezzageApp.messages[mess].getHTMLText(message);
+                date.innerHTML = mezzageApp.messages[mess].getDateText();
+                li.appendChild(text);
+                li.appendChild(date);
+            }
+       
+            ul.appendChild(li);
+            var textbox = document.querySelector("#textbox");
+            textbox.value = "";
+ */

@@ -30,12 +30,7 @@ h1 {
     margin:0px;
 }
 
-ul {
-    list-style:none;
-    padding-left:0px;
-}
-
-li {
+.message {
     padding:10px;
     font-family: 'Shadows Into Light Two', cursive;
     font-size:1em;
