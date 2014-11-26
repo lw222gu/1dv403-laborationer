@@ -7,6 +7,7 @@ var mezzageApp = {
     init: function(e){ 
         
         var button = document.querySelector("#button");
+        document.getElementById("counter").innerHTML = "Antal meddelanden: 0";
 
         button.onclick = function(){
 
@@ -26,20 +27,31 @@ var mezzageApp = {
     renderMessages: function(){
 
         document.getElementById("messages").innerHTML = "";
+        var textbox = document.querySelector("#textbox");
+        
+        var counter = 0;
+        var counterText; 
         
         for (var i = 0; i < mezzageApp.messages.length; ++i){
             mezzageApp.renderMessage(i);
+            textbox.value = "";
+            counter++;
+            counterText = document.getElementById("counter").innerHTML = "Antal meddelanden: " + counter;
         }
+        
     },
     
     
     renderMessage: function(messageID){
         
         var myMessages = document.getElementById("messages");
+        
         var oneMessage = document.createElement("div");
         oneMessage.className = "message";
+        
         var text = document.createElement("p");
         text.className = "messagetext";
+        
         var date = document.createElement("footer");
         date.className = "datetext";
 
@@ -48,10 +60,7 @@ var mezzageApp = {
         oneMessage.appendChild(text);
         oneMessage.appendChild(date);
         
-        myMessages.appendChild(oneMessage);        
-
-        var textbox = document.querySelector("#textbox");
-        textbox.value = "";
+        myMessages.appendChild(oneMessage);
         
     },
 

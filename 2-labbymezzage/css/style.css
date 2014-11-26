@@ -46,11 +46,15 @@ p {
     margin-bottom:10px;
 }
 
-.datetext {
+#counter, .datetext {
     font-family:Arial, sans-serif;
     font-size:0.7em;
     text-align:right;
     margin-bottom:5px;
+}
+
+#counter {
+    padding:10px;
 }
 
 #textbox {
