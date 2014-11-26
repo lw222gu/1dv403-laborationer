@@ -11,26 +11,33 @@ var mezzageApp = {
         document.getElementById("counter").innerHTML = "Antal meddelanden: 0";
 
         button.onclick = function(){
-            mezzageApp.createMessage();
+            mezzageApp.createMessage(textarea);
         };
         
         textarea.onkeypress = function(e){
             if(e.keyCode == 13 && !e.shiftKey){
                     e.preventDefault();
-                    mezzageApp.createMessage();
+                    mezzageApp.createMessage(textarea);
             }
         };
 
     },
     
-    createMessage: function(){
-        var message = document.getElementById("textbox").value;
-
-        var mess = new Message(message, new Date());
-        mezzageApp.messages.push(mess);
-        console.log(mezzageApp.messages);
+    createMessage: function(textarea){
+        var message = textarea.value;
+        
+        if(message === ""){
+            alert ("Du måste skriva in minst ett tecken.");
+        }
+        
+        else{
             
-        mezzageApp.renderMessages(mezzageApp.messages[mezzageApp.messages.length-1]);
+            var mess = new Message(message, new Date());
+            mezzageApp.messages.push(mess);
+            console.log(mezzageApp.messages);
+                
+            mezzageApp.renderMessages(mezzageApp.messages[mezzageApp.messages.length-1]);
+        }
     },
     
     
