@@ -92,7 +92,7 @@ var mezzageApp = {
         
         var aMessageTime = document.createElement("a");
         aMessageTime.setAttribute("href", "#");
-        
+
         aMessageTime.appendChild(messageTime);
 
         oneMessage.appendChild(text);
@@ -110,6 +110,19 @@ var mezzageApp = {
             mezzageApp.messageTimeCreated(messageID);
         };
         
+        aMessageTime.onkeydown = function(e){
+            if(e.keyCode == 13){
+                e.preventDefault();
+                mezzageApp.messageTimeCreated(messageID);
+            }
+        };
+        
+        aRemoveMessage.onkeydown = function(e){
+            if(e.keyCode == 13){
+                e.preventDefault();
+                mezzageApp.removeActualMessage(messageID);
+            }
+        };
     },
     
     messageTimeCreated: function(time){
