@@ -45,7 +45,7 @@ p {
     margin-top:0px;
     margin-bottom:10px;
     float:left;
-    width: 88%;
+    width: 87%;
     overflow:auto;
     word-break: break-all;
 }
@@ -66,6 +66,7 @@ p {
 
 .messagetime {
     margin-right: 4px;
+    margin-left: 8px;
 }
 
 .removemessage {
