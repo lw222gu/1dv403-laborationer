@@ -32,7 +32,18 @@ Message.prototype.getHTMLText = function(){
 };
 
 Message.prototype.getDateText = function(){
-    var dateText = "Inlägget postades " + this.getDate().getFullYear() + "-" + (this.getDate().getMonth()+1) + "-" + this.getDate().getDate();
+    
+    var d = this.getDate();
+    var h = addZeroToDate(d.getHours());
+    var m = addZeroToDate(d.getMinutes());
+    var s = addZeroToDate(d.getSeconds());
+    var dateText = "Inlägget postades " + d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate() + ", " + h + ":" + m + ":" + s;
     return dateText;
 };
 
+function addZeroToDate (i){
+    if (i < 10){
+        i = "0" + i;
+    }
+    return i;
+}
