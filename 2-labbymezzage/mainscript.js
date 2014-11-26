@@ -69,8 +69,14 @@ var mezzageApp = {
         removeMessage.className = "removemessage";
         removeMessage.setAttribute("src", "css/pics/remove_message.svg");
         removeMessage.setAttribute("alt", "Radera meddelandet");
+        
+        var messageTime = document.createElement("img");
+        messageTime.className = "messagetime";
+        messageTime.setAttribute("src", "css/pics/message_time.svg");
+        messageTime.setAttribute("alt", "När skapades meddelandet?");
 
         oneMessage.appendChild(text);
+        oneMessage.appendChild(messageTime);
         oneMessage.appendChild(removeMessage);
         oneMessage.appendChild(date);
         
@@ -80,6 +86,18 @@ var mezzageApp = {
             mezzageApp.removeActualMessage(messageID);
         };
         
+        messageTime.onclick = function(){
+            mezzageApp.messageTimeCreated(messageID);
+        };
+        
+    },
+    
+    messageTimeCreated: function(time){
+            var months = ["januari", "februari", "mars", "april", "maj", "juni", "juli", "augusti", "september", "oktober", "november", "december"];
+            var monthNumber = mezzageApp.messages[time].getDate().getMonth();
+            var month = months[monthNumber];
+            var d = mezzageApp.messages[time].getDate();
+            alert("Inlägget skapades den " + d.getDate() + " " + month + " " + d.getFullYear() + " klockan " + mezzageApp.messages[time].getDateText());
     },
     
     removeActualMessage: function(removedMessage){

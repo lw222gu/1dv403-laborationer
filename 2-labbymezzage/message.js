@@ -37,7 +37,7 @@ Message.prototype.getDateText = function(){
     var h = addZeroToDate(d.getHours());
     var m = addZeroToDate(d.getMinutes());
     var s = addZeroToDate(d.getSeconds());
-    var dateText = "Inlägget postades " + d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate() + ", " + h + ":" + m + ":" + s;
+    var dateText = h + ":" + m + ":" + s;
     return dateText;
 };
 
