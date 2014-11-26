@@ -45,7 +45,7 @@ p {
     margin-top:0px;
     margin-bottom:10px;
     float:left;
-    width: 94%;
+    width: 88%;
 }
 
 #counter, .datetext {
@@ -64,7 +64,11 @@ p {
 
 .removemessage {
     margin-right:0px;
-}    
+}
+
+.messagetime {
+    margin-right: 4px;
+}
 
 #textbox {
     resize:none;
