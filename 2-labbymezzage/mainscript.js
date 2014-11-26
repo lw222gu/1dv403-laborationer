@@ -29,16 +29,22 @@ var mezzageApp = {
         document.getElementById("messages").innerHTML = "";
         var textbox = document.querySelector("#textbox");
         
-        var counter = 0;
-        var counterText; 
+         
         
         for (var i = 0; i < mezzageApp.messages.length; ++i){
             mezzageApp.renderMessage(i);
             textbox.value = "";
-            counter++;
-            counterText = document.getElementById("counter").innerHTML = "Antal meddelanden: " + counter;
+            mezzageApp.countMessages(i);
         }
         
+    },
+    
+    countMessages: function(count){
+        var counter = count;
+        var counterText;
+        counter++;
+        counterText = document.getElementById("counter").innerHTML = "Antal meddelanden: " + counter;
+
     },
     
     
@@ -51,16 +57,24 @@ var mezzageApp = {
         
         var text = document.createElement("p");
         text.className = "messagetext";
+        text.innerHTML = mezzageApp.messages[messageID].getHTMLText();
         
         var date = document.createElement("footer");
         date.className = "datetext";
-
-        text.innerHTML = mezzageApp.messages[messageID].getHTMLText();
         date.innerHTML = mezzageApp.messages[messageID].getDateText();
+
+        var removeMessage = document.createElement("img");
+        removeMessage.className = "removemessage";
+        removeMessage.setAttribute("src", "css/pics/remove_message.svg");
+        removeMessage.setAttribute("alt", "Radera meddelandet");
+
         oneMessage.appendChild(text);
+        oneMessage.appendChild(removeMessage);
         oneMessage.appendChild(date);
         
         myMessages.appendChild(oneMessage);
+        
+        
         
     },
 
