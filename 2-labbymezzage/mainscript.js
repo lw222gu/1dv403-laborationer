@@ -113,15 +113,16 @@ var mezzageApp = {
         
         myMessages.appendChild(oneMessage);
         
-        removeMessage.onclick = function(){
+        aRemoveMessage.onclick = function(){
             mezzageApp.removeActualMessage(messageID);
         };
         
-        messageTime.onclick = function(){
+        aMessageTime.onclick = function(){
             mezzageApp.messageTimeCreated(messageID);
         };
         
         aMessageTime.onkeydown = function(e){
+            console.log(e); 
             if(e.keyCode == 13){
                 e.preventDefault();
                 mezzageApp.messageTimeCreated(messageID);
@@ -134,6 +135,8 @@ var mezzageApp = {
                 mezzageApp.removeActualMessage(messageID);
             }
         };
+
+
     },
     
     messageTimeCreated: function(time){
