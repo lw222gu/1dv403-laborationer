@@ -30,12 +30,11 @@ var mezzageApp = {
             alert ("Du måste skriva in minst ett tecken.");
         }
         
-        else{
+        else if(message !== ""){
             
             var mess = new Message(message, new Date());
             mezzageApp.messages.push(mess);
-            console.log(mezzageApp.messages);
-                
+
             mezzageApp.renderMessages(mezzageApp.messages[mezzageApp.messages.length-1]);
         }
     },
@@ -81,6 +80,9 @@ var mezzageApp = {
         var date = document.createElement("footer");
         date.className = "datetext";
         date.innerHTML = mezzageApp.messages[messageID].getDateText();
+
+        var icons = document.createElement("div");
+        icons.className = "icons";
         
         var removeMessage = document.createElement("img");
         removeMessage.className = "removemessage";
@@ -101,10 +103,12 @@ var mezzageApp = {
         aMessageTime.setAttribute("href", "#");
 
         aMessageTime.appendChild(messageTime);
+        
+        icons.appendChild(aMessageTime);
+        icons.appendChild(aRemoveMessage);
 
         oneMessage.appendChild(text);
-        oneMessage.appendChild(aMessageTime);
-        oneMessage.appendChild(aRemoveMessage);
+        oneMessage.appendChild(icons);
         oneMessage.appendChild(date);
         
         myMessages.appendChild(oneMessage);

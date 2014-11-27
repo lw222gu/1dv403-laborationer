@@ -39,15 +39,25 @@ h1 {
     border-radius:10px 10px 0px 10px;
     box-shadow:3px 3px 0px rgba(220, 220, 220, 0.7);
     margin-bottom: 6px;
+    position:relative;
+    overflow:auto;
 }
 
 p {
     margin-top:0px;
     margin-bottom:10px;
     float:left;
-    width: 87%;
+    width: 75% ;
     overflow:auto;
+    position:relative;
+    float:left;
     word-break: break-all;
+}
+
+.icons {
+    position:relative;
+    float:right;
+    padding-bottom:5px;
 }
 
 #counter, .datetext {
@@ -62,6 +72,11 @@ p {
     padding-right:10px;
     padding-top:5px;
     padding-bottom:5px;
+}
+
+.datetext {
+    position:relative; 
+    
 }
 
 .messagetime {
