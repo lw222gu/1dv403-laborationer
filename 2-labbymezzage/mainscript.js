@@ -120,7 +120,7 @@ var mezzageApp = {
         aMessageTime.onclick = function(){
             mezzageApp.messageTimeCreated(messageID);
         };
-        
+/*        
         aMessageTime.onkeydown = function(e){
             console.log(e); 
             if(e.keyCode == 13){
@@ -135,7 +135,7 @@ var mezzageApp = {
                 mezzageApp.removeActualMessage(messageID);
             }
         };
-
+*/
 
     },
     
