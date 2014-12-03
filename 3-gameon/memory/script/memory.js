@@ -5,8 +5,8 @@ var Memory = {
     imageArray: [],
 
     init: function(){
-        var rows = 3;
-        var cols = 2;
+        var rows = 4;
+        var cols = 4;
         
         Memory.createGameArray(rows, cols);
     },
@@ -27,11 +27,29 @@ var Memory = {
             table.appendChild(tableRow);
             
             for (var j = 1; j <= cols; j++ ){
-                var imageTile = document.createElement("td");
-                imageTile.className = "imageTile";
-                tableRow.appendChild(imageTile);
+                var tileCell = document.createElement("td");
+                tileCell.className = "imageTile";
+                tableRow.appendChild(tileCell);
+                
+                var aTile = document.createElement("a");
+                aTile.className = "tilelink";
+                aTile.setAttribute("href", "#");
+                    
+                var tile = document.createElement("img");
+                tile.className = "tile";
+                tile.setAttribute("src", "pics/0.png")
+ 
+//                this.imageArray.forEach(function(value){
+//                     tile.setAttribute("src", "pics/" + value + ".png");
+//                });
+                    
+                aTile.appendChild(tile);
+                tileCell.appendChild(aTile);
+                    
             }
         }
+        
+        
     },
     
 };
