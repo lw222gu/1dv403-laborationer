@@ -48,23 +48,33 @@ var Memory = {
                     tableRow.appendChild(tileCell);
                     brickNumber += 1;
                  
-                    aTile.onclick = function(e){
+                    var myBrick = 0;                 
+                 
+                    aTile.onclick = function(){
                         var imageElement = this.getElementsByTagName("img");
-                        Memory.flipTile(imageElement[0], this.getAttribute("bricknumber"));
-                    }
+                        myBrick += 1;
+                        Memory.flipTile(imageElement[0], this.getAttribute("bricknumber"), myBrick);
+                    };
                     
-                };
+                }
                     
             }
         
     },
     
-    flipTile: function(imageElement, bricknumber){
-            
+    flipTile: function(imageElement, bricknumber, myBrick){
         imageElement.setAttribute("src", "pics/" + Memory.imageArray[bricknumber] + ".png");
-        
-    },    
-    
+        console.log(myBrick);
+    },
+ 
+ /*
+    compareTiles: function(myBrick){
+        var turnedBricks = [];
+        turnedBricks.push(myBrick);
+        console.log(turnedBricks);
+    },
+*/ 
+
 };
 
 window.onload = Memory.init; //pekar på metoden init som kommer köras när sidan laddats
