@@ -3,6 +3,8 @@
 var Memory = {
 
     imageArray: [],
+    turnedBricks: [],
+    numberOfPairs: 0,
 
     init: function(){
         var rows = 4;
@@ -48,12 +50,11 @@ var Memory = {
                     tableRow.appendChild(tileCell);
                     brickNumber += 1;
                  
-                    var myBrick = 0;                 
+                                     
                  
                     aTile.onclick = function(){
                         var imageElement = this.getElementsByTagName("img");
-                        myBrick += 1;
-                        Memory.flipTile(imageElement[0], this.getAttribute("bricknumber"), myBrick);
+                        Memory.flipTile(imageElement[0], this.getAttribute("bricknumber"));
                     };
                     
                 }
@@ -62,18 +63,31 @@ var Memory = {
         
     },
     
-    flipTile: function(imageElement, bricknumber, myBrick){
-        imageElement.setAttribute("src", "pics/" + Memory.imageArray[bricknumber] + ".png");
-        console.log(myBrick);
+    flipTile: function(imageElement, brickNumber){
+        var imageID = Memory.imageArray[brickNumber];
+        imageElement.setAttribute("src", "pics/" + imageID + ".png");
+
+        Memory.turnedBricks.push(brickNumber);
+    
+        if (Memory.turnedBricks.length === 2){
+            Memory.compareTiles();
+            Memory.turnedBricks = [];
+        }
+        
     },
  
- /*
-    compareTiles: function(myBrick){
-        var turnedBricks = [];
-        turnedBricks.push(myBrick);
-        console.log(turnedBricks);
+    compareTiles: function(){
+        if (Memory.imageArray[Memory.turnedBricks[0]] === Memory.imageArray[Memory.turnedBricks[1]]){
+            Memory.numberOfPairs++;
+            console.log("Antal par: ", Memory.numberOfPairs);
+        }
+        
+        else{
+            
+        }
+        
     },
-*/ 
+
 
 };
 
