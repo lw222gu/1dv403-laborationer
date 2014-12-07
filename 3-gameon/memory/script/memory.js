@@ -5,6 +5,7 @@ var Memory = {
     imageArray: [],
     turnedBricks: [],
     numberOfPairs: 0,
+    numberOfTurns: 0,
 
     init: function(){
         var rows = 4;
@@ -66,7 +67,10 @@ var Memory = {
     
         if (Memory.turnedBricks.length === 2){
             Memory.compareTiles();
+            Memory.numberOfTurns++;
 //            Memory.turnedBricks = [];
+            console.log("Antal par: ", Memory.numberOfPairs);
+            console.log("Antal försök: ", Memory.numberOfTurns);
         }
         
     },
@@ -74,7 +78,7 @@ var Memory = {
     compareTiles: function(){
         if (Memory.imageArray[Memory.turnedBricks[0]] === Memory.imageArray[Memory.turnedBricks[1]]){
             Memory.numberOfPairs++;
-            console.log("Antal par: ", Memory.numberOfPairs);
+            Memory.turnedBricks = [];
         }
         
         else {
@@ -86,7 +90,6 @@ var Memory = {
     },
     
     flipBackTiles: function(){
-//        var brickOne = Memory.imageArray[Memory.turnedBricks[0]];
         var brickOne = Memory.turnedBricks[0];
         var brickOneImage = document.getElementById(brickOne).firstChild;
         brickOneImage.setAttribute("src", "pics/0.png");
