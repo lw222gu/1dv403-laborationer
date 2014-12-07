@@ -4,6 +4,7 @@ var Memory = {
 
     imageArray: [],
     turnedBricks: [],
+    pairedBricks: [],
     numberOfPairs: 0,
     numberOfTurns: 0,
     numberOfFinishedGames: 0,
@@ -69,8 +70,16 @@ var Memory = {
     
     flipTile: function(imageElement, brickNumber){
         
-        if(brickNumber === Memory.turnedBricks[0]){
+        if(brickNumber === Memory.turnedBricks[Memory.turnedBricks.length-1]){
+        
             return false;
+        }
+        
+        for (var i = 0; i < Memory.pairedBricks.length; i++){
+         
+            if(brickNumber === Memory.pairedBricks[i]){
+                return false;
+            }
         }
         
         var imageID = Memory.imageArray[brickNumber];
@@ -99,6 +108,7 @@ var Memory = {
     compareTiles: function(){
         if (Memory.imageArray[Memory.turnedBricks[0]] === Memory.imageArray[Memory.turnedBricks[1]]){
             Memory.numberOfPairs++;
+            Memory.pairedBricks.push(Memory.turnedBricks[0], Memory.turnedBricks[1]);
  
             Memory.turnedBricks = [];
             
@@ -140,6 +150,7 @@ var Memory = {
         Memory.numberOfPairs = 0;
 
         gameTable.innerHTML = "";
+        Memory.pairedBricks = [];
         Memory.init();
     },
 
