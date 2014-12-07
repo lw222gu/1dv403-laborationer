@@ -51,11 +51,16 @@ var Memory = {
                     tableRow.appendChild(tileCell);
                     brickNumber += 1;
                  
+/*                    aTile.addEventListener("click", function(){
+                        var imageElement = this.getElementsByTagName("img");
+                        Memory.flipTile(imageElement[0], this.getAttribute("id"));
+                    });
+*/
+
                     aTile.onclick = function(){
                         var imageElement = this.getElementsByTagName("img");
                         Memory.flipTile(imageElement[0], this.getAttribute("id"));
                     };
-                    
                 }
                     
             }
@@ -63,11 +68,16 @@ var Memory = {
     },
     
     flipTile: function(imageElement, brickNumber){
+        
+        if(brickNumber === Memory.turnedBricks[0]){
+            return false;
+        }
+        
         var imageID = Memory.imageArray[brickNumber];
         imageElement.setAttribute("src", "pics/" + imageID + ".png");
 
         Memory.turnedBricks.push(brickNumber);
- 
+
         var pairs = document.querySelector(".pairs");
  
     
