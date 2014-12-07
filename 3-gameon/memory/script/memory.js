@@ -8,8 +8,8 @@ var Memory = {
     numberOfPairs: 0,
     numberOfTurns: 0,
     numberOfFinishedGames: 0,
-    rows: 2,
-    cols: 2,
+    rows: 4,
+    cols: 4,
 
     init: function(){
 
@@ -45,7 +45,7 @@ var Memory = {
                         
                     var tile = document.createElement("img");
                     tile.className = "tile";
-                    tile.setAttribute("src", "pics/0.png");
+                    tile.setAttribute("src", "pics/0.svg");
                         
                     aTile.appendChild(tile);
                     tileCell.appendChild(aTile);
@@ -58,7 +58,8 @@ var Memory = {
                     });
 */
 
-                    aTile.onclick = function(){
+                    aTile.onclick = function(e){
+                        e.preventDefault();
                         var imageElement = this.getElementsByTagName("img");
                         Memory.flipTile(imageElement[0], this.getAttribute("id"));
                     };
@@ -83,7 +84,7 @@ var Memory = {
         }
         
         var imageID = Memory.imageArray[brickNumber];
-        imageElement.setAttribute("src", "pics/" + imageID + ".png");
+        imageElement.setAttribute("src", "pics/" + imageID + ".svg");
 
         Memory.turnedBricks.push(brickNumber);
 
@@ -125,11 +126,11 @@ var Memory = {
     flipBackTiles: function(){
         var brickOne = Memory.turnedBricks[0];
         var brickOneImage = document.getElementById(brickOne).firstChild;
-        brickOneImage.setAttribute("src", "pics/0.png");
+        brickOneImage.setAttribute("src", "pics/0.svg");
 
         var brickTwo = Memory.turnedBricks[1];
         var brickTwoImage = document.getElementById(brickTwo).firstChild;
-        brickTwoImage.setAttribute("src", "pics/0.png");
+        brickTwoImage.setAttribute("src", "pics/0.svg");
 
         Memory.turnedBricks = [];
 
