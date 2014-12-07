@@ -18,14 +18,11 @@ var Memory = {
         console.log(this.imageArray);
     
         Memory.createBoard(rows, cols);
-        
-            
     },
     
     createBoard: function(rows, cols){
         var table = document.querySelector(".memorytable");
         var brickNumber = 0;
-
 
             for (var i = 1; i <= rows; i++){
                 var tableRow = document.createElement("tr");
@@ -39,7 +36,7 @@ var Memory = {
                     var aTile = document.createElement("a");
                     aTile.className = "tilelink";
                     aTile.setAttribute("href", "#");
-                    aTile.setAttribute("bricknumber", brickNumber);
+                    aTile.setAttribute("id", brickNumber);
                         
                     var tile = document.createElement("img");
                     tile.className = "tile";
@@ -50,11 +47,9 @@ var Memory = {
                     tableRow.appendChild(tileCell);
                     brickNumber += 1;
                  
-                                     
-                 
                     aTile.onclick = function(){
                         var imageElement = this.getElementsByTagName("img");
-                        Memory.flipTile(imageElement[0], this.getAttribute("bricknumber"));
+                        Memory.flipTile(imageElement[0], this.getAttribute("id"));
                     };
                     
                 }
@@ -71,7 +66,7 @@ var Memory = {
     
         if (Memory.turnedBricks.length === 2){
             Memory.compareTiles();
-            Memory.turnedBricks = [];
+//            Memory.turnedBricks = [];
         }
         
     },
@@ -82,10 +77,26 @@ var Memory = {
             console.log("Antal par: ", Memory.numberOfPairs);
         }
         
-        else{
-            
+        else {
+            setTimeout(function() {
+                Memory.flipBackTiles();
+            }, 1000);
         }
         
+    },
+    
+    flipBackTiles: function(){
+//        var brickOne = Memory.imageArray[Memory.turnedBricks[0]];
+        var brickOne = Memory.turnedBricks[0];
+        var brickOneImage = document.getElementById(brickOne).firstChild;
+        brickOneImage.setAttribute("src", "pics/0.png");
+
+        var brickTwo = Memory.turnedBricks[1];
+        var brickTwoImage = document.getElementById(brickTwo).firstChild;
+        brickTwoImage.setAttribute("src", "pics/0.png");
+
+        Memory.turnedBricks = [];
+
     },
 
 
