@@ -6,12 +6,13 @@ var Memory = {
     turnedBricks: [],
     numberOfPairs: 0,
     numberOfTurns: 0,
+    numberOfFinishedGames: 0,
+    rows: 2,
+    cols: 2,
 
     init: function(){
-        var rows = 4;
-        var cols = 4;
-        
-        Memory.createGameArray(rows, cols);
+
+        Memory.createGameArray(Memory.rows, Memory.cols);
     },
     
     createGameArray: function (rows, cols){
@@ -24,6 +25,8 @@ var Memory = {
     createBoard: function(rows, cols){
         var table = document.querySelector(".memorytable");
         var brickNumber = 0;
+        var pairs = document.querySelector(".pairs");
+        pairs.innerHTML = "Antal par: 0";
 
             for (var i = 1; i <= rows; i++){
                 var tableRow = document.createElement("tr");
@@ -64,13 +67,21 @@ var Memory = {
         imageElement.setAttribute("src", "pics/" + imageID + ".png");
 
         Memory.turnedBricks.push(brickNumber);
+ 
+        var pairs = document.querySelector(".pairs");
+ 
     
         if (Memory.turnedBricks.length === 2){
             Memory.compareTiles();
             Memory.numberOfTurns++;
 //            Memory.turnedBricks = [];
-            console.log("Antal par: ", Memory.numberOfPairs);
+            pairs.innerHTML = "Antal par: " + Memory.numberOfPairs;
             console.log("Antal försök: ", Memory.numberOfTurns);
+            
+            if(Memory.numberOfPairs === (Memory.rows * Memory.cols) / 2){
+                Memory.gameFinished();
+            }
+            
         }
         
     },
@@ -78,7 +89,9 @@ var Memory = {
     compareTiles: function(){
         if (Memory.imageArray[Memory.turnedBricks[0]] === Memory.imageArray[Memory.turnedBricks[1]]){
             Memory.numberOfPairs++;
+ 
             Memory.turnedBricks = [];
+            
         }
         
         else {
@@ -100,6 +113,24 @@ var Memory = {
 
         Memory.turnedBricks = [];
 
+    },
+    
+    gameFinished: function(){
+        
+        var finishedGames = document.querySelector(".finishedgames");
+        var gameTable = document.querySelector(".memorytable");
+
+
+        Memory.numberOfFinishedGames++;
+        finishedGames.innerHTML = "Antal klarade omgångar: " + Memory.numberOfFinishedGames;
+
+        alert("Grattis, du vann! Du klarade spelet på " + Memory.numberOfTurns + " försök.");
+
+        Memory.numberOfTurns = 0;
+        Memory.numberOfPairs = 0;
+
+        gameTable.innerHTML = "";
+        Memory.init();
     },
 
 
