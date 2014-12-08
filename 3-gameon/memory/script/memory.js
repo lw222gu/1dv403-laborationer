@@ -153,25 +153,29 @@ var Memory = {
         Memory.numberOfFinishedGames++;
         finishedGames.innerHTML = "Antal klarade omgångar: " + Memory.numberOfFinishedGames;
 
-        var text = "Grattis, du vann! Du klarade spelet på " + Memory.numberOfTurns + " försök.";
-
-        Memory.youWonPopup(text);
+        var h2Text = "Grattis, du vann!";
+        var pText = " Du klarade spelet på " + Memory.numberOfTurns + " försök.";
+        Memory.youWonPopup(h2Text, pText);
         
     },
     
     //Popup som talar om hur många försök som krävts och ger möjligheten att spela igen
-    youWonPopup: function (text){
+    youWonPopup: function (h2Text, pText){
         var main = document.getElementById("main");
         var divPopup = document.createElement("div");
+        divPopup.setAttribute("class", "popup")
+        var h2Popup = document.createElement("h2");
         var pPopup = document.createElement("p");
         var button = document.createElement("button");
         
-        pPopup.innerHTML = text;
+        h2Popup.innerHTML = h2Text;
+        pPopup.innerHTML = pText;
         button.innerHTML = "Spela igen!";
-        
+
+        divPopup.appendChild(h2Popup);
         divPopup.appendChild(pPopup);
         divPopup.appendChild(button);
-        main.appendChild(divPopup);
+        main.insertBefore(divPopup, main.firstChild);
         
         button.onclick = function(){
             main.removeChild(divPopup);

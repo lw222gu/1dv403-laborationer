@@ -21,7 +21,7 @@ main {
     border-radius:10px;
 }
 
-h1 {
+h1, h2 {
     font-family: 'Shadows Into Light Two', cursive;
     color: #FFF ;
     margin:0px;
@@ -29,6 +29,8 @@ h1 {
 
 table {
     width: 100%;
+    position:relative;
+    z-index:1;
 }
 
 a {
@@ -48,4 +50,37 @@ p {
 
 aside {
     padding-top:25px;
+}
+
+.popup {
+    position:absolute;
+    z-index:2;
+    width:260px;
+    height:95px;
+    margin: 20px;
+    padding:15px;
+    display:inline-block;
+    background-color:rgba(255, 255, 255, 0.85);
+    border-radius:15px;
+}
+
+.popup p {
+    color:#000;
+    margin-top:7px;
+    margin-bottom:12px;
+}
+
+.popup h2 {
+    margin:0px;
+    color:#F20D86;
+}
+
+button {
+    background-color:#F20D86;
+    color:#FFF;
+    border-radius:4px;
+    border:none;
+    cursor: pointer;
+    font-size:0.8em;
+    padding:5px;
 }
