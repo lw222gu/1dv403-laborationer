@@ -8,8 +8,8 @@ var Memory = {
     numberOfPairs: 0,
     numberOfTurns: 0,
     numberOfFinishedGames: 0,
-    rows: 2,
-    cols: 2,
+    rows: 4,
+    cols: 4,
 
     init: function(){
         
