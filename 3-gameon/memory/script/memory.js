@@ -8,10 +8,18 @@ var Memory = {
     numberOfPairs: 0,
     numberOfTurns: 0,
     numberOfFinishedGames: 0,
-    rows: 4,
-    cols: 4,
+    rows: 2,
+    cols: 2,
 
     init: function(){
+        
+        var gameTable = document.querySelector(".memorytable");
+
+        Memory.numberOfTurns = 0;
+        Memory.numberOfPairs = 0;
+
+        gameTable.innerHTML = "";
+        Memory.pairedBricks = [];
 
         Memory.createGameArray(Memory.rows, Memory.cols);
     },
@@ -139,20 +147,44 @@ var Memory = {
     gameFinished: function(){
         
         var finishedGames = document.querySelector(".finishedgames");
-        var gameTable = document.querySelector(".memorytable");
+//        var gameTable = document.querySelector(".memorytable");
 
 
         Memory.numberOfFinishedGames++;
         finishedGames.innerHTML = "Antal klarade omgångar: " + Memory.numberOfFinishedGames;
 
-        alert("Grattis, du vann! Du klarade spelet på " + Memory.numberOfTurns + " försök.");
+        var text = "Grattis, du vann! Du klarade spelet på " + Memory.numberOfTurns + " försök.";
 
-        Memory.numberOfTurns = 0;
+        Memory.youWonPopup(text);
+        
+//        alert("Grattis, du vann! Du klarade spelet på " + Memory.numberOfTurns + " försök.");
+
+/*        Memory.numberOfTurns = 0;
         Memory.numberOfPairs = 0;
 
         gameTable.innerHTML = "";
         Memory.pairedBricks = [];
-        Memory.init();
+*/
+//        Memory.init();
+    },
+    
+    youWonPopup: function (text){
+        var main = document.getElementById("main");
+        var divPopup = document.createElement("div");
+        var pPopup = document.createElement("p");
+        var button = document.createElement("button");
+        
+        pPopup.innerHTML = text;
+        button.innerHTML = "Spela igen!";
+        
+        divPopup.appendChild(pPopup);
+        divPopup.appendChild(button);
+        main.appendChild(divPopup);
+        
+        button.onclick = function(){
+            main.removeChild(divPopup);
+            Memory.init();
+        };
     },
 
 
