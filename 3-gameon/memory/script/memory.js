@@ -14,16 +14,17 @@ var Memory = {
     init: function(){
         
         var gameTable = document.querySelector(".memorytable");
-
+        
+        //Nollställer infon ifall att man är på omgång två++ i spelet
         Memory.numberOfTurns = 0;
         Memory.numberOfPairs = 0;
-
         gameTable.innerHTML = "";
         Memory.pairedBricks = [];
 
         Memory.createGameArray(Memory.rows, Memory.cols);
     },
     
+    //Slumpar arrayen
     createGameArray: function (rows, cols){
         this.imageArray = RandomGenerator.getPictureArray(rows, cols);
         console.log(this.imageArray);
@@ -31,6 +32,7 @@ var Memory = {
         Memory.createBoard(rows, cols);
     },
     
+    //Genererar spelbrädet
     createBoard: function(rows, cols){
         var table = document.querySelector(".memorytable");
         var brickNumber = 0;
@@ -59,13 +61,8 @@ var Memory = {
                     tileCell.appendChild(aTile);
                     tableRow.appendChild(tileCell);
                     brickNumber += 1;
-                 
-/*                    aTile.addEventListener("click", function(){
-                        var imageElement = this.getElementsByTagName("img");
-                        Memory.flipTile(imageElement[0], this.getAttribute("id"));
-                    });
-*/
-
+                    
+                    //onclick som skickar med första objektet i arrayen samt vilken placering kortet har i arrayen
                     aTile.onclick = function(e){
                         e.preventDefault();
                         var imageElement = this.getElementsByTagName("img");
@@ -77,8 +74,10 @@ var Memory = {
         
     },
     
+    //Vänder vald bricka
     flipTile: function(imageElement, brickNumber){
         
+        //Kontrollerar om brickan redan är vänd, och förhindrar klick
         if(brickNumber === Memory.turnedBricks[Memory.turnedBricks.length-1]){
         
             return false;
@@ -91,6 +90,7 @@ var Memory = {
             }
         }
         
+        //Ger vänd bricka en ny bildlänk
         var imageID = Memory.imageArray[brickNumber];
         imageElement.setAttribute("src", "pics/" + imageID + ".svg");
 
@@ -98,14 +98,13 @@ var Memory = {
 
         var pairs = document.querySelector(".pairs");
  
-    
+        //Kontrollerar om antalet vända brickor är två
         if (Memory.turnedBricks.length === 2){
             Memory.compareTiles();
             Memory.numberOfTurns++;
-//            Memory.turnedBricks = [];
             pairs.innerHTML = "Antal par: " + Memory.numberOfPairs;
             console.log("Antal försök: ", Memory.numberOfTurns);
-            
+
             if(Memory.numberOfPairs === (Memory.rows * Memory.cols) / 2){
                 Memory.gameFinished();
             }
@@ -114,6 +113,7 @@ var Memory = {
         
     },
  
+    //Jämför de vända brickorna
     compareTiles: function(){
         if (Memory.imageArray[Memory.turnedBricks[0]] === Memory.imageArray[Memory.turnedBricks[1]]){
             Memory.numberOfPairs++;
@@ -131,6 +131,7 @@ var Memory = {
         
     },
     
+    //Vänder tillbaka felaktiga brickor
     flipBackTiles: function(){
         var brickOne = Memory.turnedBricks[0];
         var brickOneImage = document.getElementById(brickOne).firstChild;
@@ -144,11 +145,10 @@ var Memory = {
 
     },
     
+    //Vid alla rätt:
     gameFinished: function(){
         
         var finishedGames = document.querySelector(".finishedgames");
-//        var gameTable = document.querySelector(".memorytable");
-
 
         Memory.numberOfFinishedGames++;
         finishedGames.innerHTML = "Antal klarade omgångar: " + Memory.numberOfFinishedGames;
@@ -157,17 +157,9 @@ var Memory = {
 
         Memory.youWonPopup(text);
         
-//        alert("Grattis, du vann! Du klarade spelet på " + Memory.numberOfTurns + " försök.");
-
-/*        Memory.numberOfTurns = 0;
-        Memory.numberOfPairs = 0;
-
-        gameTable.innerHTML = "";
-        Memory.pairedBricks = [];
-*/
-//        Memory.init();
     },
     
+    //Popup som talar om hur många försök som krävts och ger möjligheten att spela igen
     youWonPopup: function (text){
         var main = document.getElementById("main");
         var divPopup = document.createElement("div");
