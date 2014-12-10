@@ -56,6 +56,7 @@ var Memory = {
                     var tile = document.createElement("img");
                     tile.className = "tile";
                     tile.setAttribute("src", "pics/0.svg");
+                    tile.setAttribute("alt", "spelbricka");
                         
                     aTile.appendChild(tile);
                     tileCell.appendChild(aTile);
@@ -65,9 +66,23 @@ var Memory = {
                     //onclick som skickar med första objektet i arrayen samt vilken placering kortet har i arrayen
                     aTile.onclick = function(e){
                         e.preventDefault();
+                       
+                        if (Memory.turnedBricks.length === 2){
+                            return false;
+                        }
+ 
                         var imageElement = this.getElementsByTagName("img");
                         Memory.flipTile(imageElement[0], this.getAttribute("id"));
                     };
+                    
+/*                    aTile.addEventListener("click", function(e){
+                        e.preventDefault();
+                        var imageElement = this.getElementsByTagName("img");
+                        Memory.flipTile(imageElement[0], this.getAttribute("id"));
+                    });
+*/                    
+                    
+                    
                 }
                     
             }
@@ -100,6 +115,7 @@ var Memory = {
  
         //Kontrollerar om antalet vända brickor är två
         if (Memory.turnedBricks.length === 2){
+            
             Memory.compareTiles();
             Memory.numberOfTurns++;
             pairs.innerHTML = "Antal par: " + Memory.numberOfPairs;
@@ -163,7 +179,7 @@ var Memory = {
     youWonPopup: function (h2Text, pText){
         var main = document.getElementById("main");
         var divPopup = document.createElement("div");
-        divPopup.setAttribute("class", "popup")
+        divPopup.setAttribute("class", "popup");
         var h2Popup = document.createElement("h2");
         var pPopup = document.createElement("p");
         var button = document.createElement("button");
