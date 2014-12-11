@@ -19,6 +19,7 @@ main {
     margin-top:25px;
     padding:10px;
     border-radius:10px;
+    overflow:auto;
 }
 
 h1, h2 {
@@ -29,4 +30,36 @@ h1, h2 {
 
 h2 {
     color:#008E9C;
+}
+
+p {
+    font-size:0.8em;
+}
+
+textarea {
+    resize:none;
+    box-sizing:border-box;
+    width: 100%;
+    overflow:auto;
+    height:75px;
+    padding:10px;
+    margin-bottom:5px;
+    border-width:1px;
+    border-color:rgb(200, 200, 200);
+    border-style:solid;
+    border-radius:10px;
+    box-shadow:3px 3px 0px rgba(220, 220, 220, 0.7);
+    background-color:rgba(240, 240, 240, 0.5);
+}
+
+#button {
+    float:right;
+    padding:10px;
+    border-radius:8px;
+    border:none;
+    color:#FFF;
+    background-color:#000;
+    cursor: pointer;
+    box-shadow:3px 3px 0px rgba(220, 220, 220, 0.7);
+    font-size:0.7em;
 }

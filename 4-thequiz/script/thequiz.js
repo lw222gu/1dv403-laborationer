@@ -2,6 +2,8 @@
 
 var Quiz = {
     
+    questionNumber: 0,
+    
     init: function(){
         
     },
