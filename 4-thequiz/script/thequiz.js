@@ -29,6 +29,13 @@ var Quiz = {
     generateQuestion: function(question){
         
         console.log(question);
+        var questionHeader = document.getElementById("questionheader");
+        var questionText = document.getElementById("question");
+        
+        questionHeader.innerHTML = "Fråga " + Quiz.questionNumber;
+        questionText.innerHTML = question;
+        
+        Quiz.questionNumber++;
     
     },
     
