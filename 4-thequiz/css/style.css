@@ -1,0 +1,28 @@
+body {
+    font-size: 1em;
+    padding-top:50px;
+    font-family:Arial, sans-serif;
+}
+
+#container {
+    max-width: 350px;
+    margin: 0 auto 0 auto;
+    background-color:#008E9C;
+    overflow: auto;
+    padding:25px;
+    border-radius:15px;
+}
+
+main {
+    width:inherit;
+    background-color:#FFF;
+    margin-top:25px;
+    padding:10px;
+    border-radius:10px;
+}
+
+h1, h2 {
+    font-family: 'Shadows Into Light Two', cursive;
+    color: #FFF ;
+    margin:0px;
+}

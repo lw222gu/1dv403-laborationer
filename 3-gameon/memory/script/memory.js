@@ -64,8 +64,8 @@ var Memory = {
                     brickNumber += 1;
                     
                     //onclick som skickar med första objektet i arrayen samt vilken placering kortet har i arrayen
-                    aTile.onclick = function(e){
-                        e.preventDefault();
+                    aTile.onclick = function(){
+//                      e.preventDefault();
                        
                         if (Memory.turnedBricks.length === 2){
                             return false;
@@ -73,15 +73,9 @@ var Memory = {
  
                         var imageElement = this.getElementsByTagName("img");
                         Memory.flipTile(imageElement[0], this.getAttribute("id"));
+                    
+                        return false;
                     };
-                    
-/*                    aTile.addEventListener("click", function(e){
-                        e.preventDefault();
-                        var imageElement = this.getElementsByTagName("img");
-                        Memory.flipTile(imageElement[0], this.getAttribute("id"));
-                    });
-*/                    
-                    
                     
                 }
                     
