@@ -24,6 +24,20 @@ main {
 
 .red {
     background-color:red;
+    -webkit-animation: changeColor 0.6s; /* Chrome, Safari, Opera */
+    animation: changeColor 0.6s;
+}
+
+@-webkit-keyframes changeColor {
+    0%   {background: white;}
+    75%  {background: #F33215;}
+    100% {background: white;}
+}
+
+@keyframes changeColor {
+    0%   {background: white;}
+    75%  {background: #F33215;}
+    100% {background: white;}
 }
 
 h1, h2 {

@@ -103,7 +103,9 @@ var Quiz = {
                 
                 setTimeout(function(){
                     main.className = "";
-                }, 2000);
+                }, 600);
+                
+                document.getElementById("questionheader").innerHTML = "Fråga " + Quiz.questionNumber + " - Fel, försök igen!";
             }
 
             document.getElementById("textbox").value = "";
