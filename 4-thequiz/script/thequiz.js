@@ -2,28 +2,29 @@
 
 var Quiz = {
     
-    questionNumber: 1,
-    answer: {},
     questionText: "",
     questionID: 1,
+    question: {},
+    numberOfAnswers: 0,
+    url: "http://vhost3.lnu.se:20080/question/",
 
     init: function(){
         
         var xhr = new XMLHttpRequest();
         
-            xhr.onreadystatechange = function(){
+        xhr.onreadystatechange = function(){
                 
-                if (xhr.readyState === 4 && xhr.status === 200){
-                    var question = JSON.parse(xhr.responseText);
-                    Quiz.questionText = question.question;
-                    Quiz.questionID = question.id;
-                    Quiz.generateQuestion(Quiz.questionText, Quiz.questionID);
-                }
+            if (xhr.readyState === 4 && xhr.status === 200){
+                Quiz.question = JSON.parse(xhr.responseText);
+                Quiz.questionText = Quiz.question.question;
+                Quiz.questionID = Quiz.question.id;                    
+                Quiz.generateQuestion(Quiz.questionText, Quiz.questionID);
+            }
                 
-            };
+        };
             
-            xhr.open("GET", "http://vhost3.lnu.se:20080/question/" + Quiz.questionID, true);
-            xhr.send(null);
+        xhr.open("GET", Quiz.url + Quiz.questionID, true);
+        xhr.send(null);
         
     },
     
@@ -38,24 +39,55 @@ var Quiz = {
         
         Quiz.questionNumber++;
         
-        Quiz.saveAnswer();
+        Quiz.writeAnswer();
     
     },
     
-    saveAnswer: function(){
+    writeAnswer: function(){
         
         var textarea = document.getElementById("textbox");
         var button = document.getElementById("button");
 
         button.onclick = function(){
             console.log(textarea.value);
+            Quiz.sendAnswer(textarea.value);
         };
         
         textarea.onkeypress = function(e){
             if(e.keyCode == 13 && !e.shiftKey){
                 e.preventDefault();
                 console.log(textarea.value);
+                Quiz.sendAnswer(textarea.value);
             }
+        };
+        
+    },
+    
+    sendAnswer: function(answerText){
+        
+        Quiz.numberOfAnswers++;
+        
+        var xhr2 = new XMLHttpRequest();
+     
+        xhr2.open("POST", Quiz.question.nextURL, true);
+        xhr2.setRequestHeader("Content-Type", "application/json"); 
+        
+        var answer = {
+	        "answer": answerText
+        };
+    
+        xhr2.send(JSON.stringify(answer));
+        
+        xhr2.onreadystatechange = function(){
+                
+            if (xhr2.status === 200){
+                console.log("Rätt!");
+            }
+            
+            else {
+                console.log("Fel!");
+            }
+                
         };
         
     },
