@@ -22,6 +22,10 @@ main {
     overflow:auto;
 }
 
+.red {
+    background-color:red;
+}
+
 h1, h2 {
     font-family: 'Shadows Into Light Two', cursive;
     color: #FFF ;
@@ -50,6 +54,41 @@ textarea {
     border-radius:10px;
     box-shadow:3px 3px 0px rgba(220, 220, 220, 0.7);
     background-color:rgba(240, 240, 240, 0.5);
+}
+
+.popup {
+    position:absolute;
+    z-index:2;
+    width:280px;
+    height:140px;
+    margin: 10px;
+    padding:15px;
+    display:inline-block;
+    background-color:rgba(0, 142, 156, 0.85);
+    border-radius:15px;
+}
+
+.popup p {
+    color:#FFF;
+    margin-top:7px;
+    margin-bottom:12px;
+}
+
+.popup h2 {
+    margin:0px;
+    margin-top:20px;
+    color:#FFF;
+}
+
+.popup button{
+    padding:10px;
+    border-radius:8px;
+    border:none;
+    color:#FFF;
+    background-color:#000;
+    cursor: pointer;
+    box-shadow:3px 3px 0px rgba(220, 220, 220, 0.7);
+    font-size:0.7em;
 }
 
 #button {

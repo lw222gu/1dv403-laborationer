@@ -97,6 +97,13 @@ var Quiz = {
             
             else if (xhr2.status === 400) {
                 console.log("Fel!");
+
+                var main = document.getElementById("main");
+                main.setAttribute("class", "red");
+                
+                setTimeout(function(){
+                    main.className = "";
+                }, 2000);
             }
 
             document.getElementById("textbox").value = "";
@@ -105,11 +112,11 @@ var Quiz = {
         
     },
     
-    correctAnswer: function(){
-        
-    },
-    
     youWonPopup: function (){
+        
+//        document.getElementById("questionheader").innerHTML = "";
+//        document.getElementById("question").innerHTML = "";
+        
         var main = document.getElementById("main");
         var divPopup = document.createElement("div");
         divPopup.setAttribute("class", "popup");
