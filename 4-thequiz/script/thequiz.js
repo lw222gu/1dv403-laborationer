@@ -3,13 +3,13 @@
 var Quiz = {
     
     questionText: "",
-    questionID: 1,
     question: {},
     numberOfAnswers: 0,
-    url: "http://vhost3.lnu.se:20080/question/",
+    questionNumber: 1,
+    url: "http://vhost3.lnu.se:20080/question/1",
 
     init: function(){
-        
+
         var xhr = new XMLHttpRequest();
         
         xhr.onreadystatechange = function(){
@@ -17,27 +17,25 @@ var Quiz = {
             if (xhr.readyState === 4 && xhr.status === 200){
                 Quiz.question = JSON.parse(xhr.responseText);
                 Quiz.questionText = Quiz.question.question;
-                Quiz.questionID = Quiz.question.id;                    
-                Quiz.generateQuestion(Quiz.questionText, Quiz.questionID);
+                
+                Quiz.generateQuestion(Quiz.questionText);
             }
                 
         };
             
-        xhr.open("GET", Quiz.url + Quiz.questionID, true);
+        xhr.open("GET", Quiz.url, true);
         xhr.send(null);
         
     },
     
-    generateQuestion: function(questionText, questionID){
+    generateQuestion: function(questionText){
         
         console.log(questionText);
         var questionHeader = document.getElementById("questionheader");
         var questionP = document.getElementById("question");
-        
-        questionHeader.innerHTML = "Fråga " + questionID;
+
+        questionHeader.innerHTML = "Fråga " + Quiz.questionNumber;
         questionP.innerHTML = questionText;
-        
-        Quiz.questionNumber++;
         
         Quiz.writeAnswer();
     
@@ -66,6 +64,7 @@ var Quiz = {
     sendAnswer: function(answerText){
         
         Quiz.numberOfAnswers++;
+        console.log(Quiz.numberOfAnswers);
         
         var xhr2 = new XMLHttpRequest();
      
@@ -80,15 +79,32 @@ var Quiz = {
         
         xhr2.onreadystatechange = function(){
                 
-            if (xhr2.status === 200){
+            if (xhr2.readyState === 4 && xhr2.status === 200){
                 console.log("Rätt!");
+                Quiz.question = JSON.parse(xhr2.responseText);
+                Quiz.url = Quiz.question.nextURL;
+                
+                Quiz.correctAnswer();
             }
             
-            else {
+            else if (xhr2.status === 400) {
                 console.log("Fel!");
             }
-                
+            
+//            else if (xhr2.status === 404){
+//                console.log("Spelet slut!");
+//            }
+
         };
+        
+    },
+    
+    correctAnswer: function(){
+        
+        document.getElementById("textbox").value = "";
+        
+        Quiz.questionNumber++;
+        Quiz.init();
         
     },
     
