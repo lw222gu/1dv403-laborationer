@@ -30,7 +30,6 @@ var Quiz = {
     
     generateQuestion: function(questionText){
         
-        console.log(questionText);
         var questionHeader = document.getElementById("questionheader");
         var questionP = document.getElementById("question");
 
@@ -44,17 +43,16 @@ var Quiz = {
     writeAnswer: function(){
         
         var textarea = document.getElementById("textbox");
+        textarea.focus();
         var button = document.getElementById("button");
 
         button.onclick = function(){
-            console.log(textarea.value);
             Quiz.sendAnswer(textarea.value);
         };
         
         textarea.onkeypress = function(e){
             if(e.keyCode == 13 && !e.shiftKey){
                 e.preventDefault();
-                console.log(textarea.value);
                 Quiz.sendAnswer(textarea.value);
             }
         };
@@ -64,8 +62,7 @@ var Quiz = {
     sendAnswer: function(answerText){
         
         Quiz.numberOfAnswers++;
-        console.log(Quiz.numberOfAnswers);
-        
+
         var xhr2 = new XMLHttpRequest();
      
         xhr2.open("POST", Quiz.question.nextURL, true);
@@ -78,14 +75,13 @@ var Quiz = {
         xhr2.send(JSON.stringify(answer));
         
         xhr2.onreadystatechange = function(){
-                
+
+            //If answer is correct    
             if (xhr2.readyState === 4 && xhr2.status === 200){
-                console.log("Rätt!");
                 Quiz.question = JSON.parse(xhr2.responseText);
                 Quiz.url = Quiz.question.nextURL;
                 
                 if (Quiz.question.nextURL === undefined){
-                    console.log("Spelet slut!");
                     Quiz.youWonPopup();
                 }
                 
@@ -95,9 +91,8 @@ var Quiz = {
                 }
             }
             
+            //If answer is wrong
             else if (xhr2.status === 400) {
-                console.log("Fel!");
-
                 var main = document.getElementById("main");
                 main.setAttribute("class", "red");
                 
@@ -116,9 +111,6 @@ var Quiz = {
     
     youWonPopup: function (){
         
-//        document.getElementById("questionheader").innerHTML = "";
-//        document.getElementById("question").innerHTML = "";
-        
         var main = document.getElementById("main");
         var divPopup = document.createElement("div");
         divPopup.setAttribute("class", "popup");
@@ -134,6 +126,8 @@ var Quiz = {
         divPopup.appendChild(pPopup);
         divPopup.appendChild(button);
         main.insertBefore(divPopup, main.firstChild);
+        
+        button.focus();
         
         button.onclick = function(){
             main.removeChild(divPopup);

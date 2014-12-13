@@ -22,9 +22,10 @@ main {
     overflow:auto;
 }
 
+/* Red flash when wrong answer */
 .red {
     background-color:red;
-    -webkit-animation: changeColor 0.6s; /* Chrome, Safari, Opera */
+    -webkit-animation: changeColor 0.6s;
     animation: changeColor 0.6s;
 }
 
@@ -70,6 +71,18 @@ textarea {
     background-color:rgba(240, 240, 240, 0.5);
 }
 
+#button {
+    float:right;
+    padding:10px;
+    border-radius:8px;
+    border:none;
+    color:#FFF;
+    background-color:#000;
+    cursor: pointer;
+    box-shadow:3px 3px 0px rgba(220, 220, 220, 0.7);
+    font-size:0.7em;
+}
+
 .popup {
     position:absolute;
     z-index:2;
@@ -94,7 +107,7 @@ textarea {
     color:#FFF;
 }
 
-.popup button{
+.popup button {
     padding:10px;
     border-radius:8px;
     border:none;
@@ -105,14 +118,3 @@ textarea {
     font-size:0.7em;
 }
 
-#button {
-    float:right;
-    padding:10px;
-    border-radius:8px;
-    border:none;
-    color:#FFF;
-    background-color:#000;
-    cursor: pointer;
-    box-shadow:3px 3px 0px rgba(220, 220, 220, 0.7);
-    font-size:0.7em;
-}
