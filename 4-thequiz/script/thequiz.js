@@ -86,6 +86,7 @@ var Quiz = {
                 
                 if (Quiz.question.nextURL === undefined){
                     console.log("Spelet slut!");
+                    Quiz.youWonPopup();
                 }
                 
                 else {
@@ -106,6 +107,33 @@ var Quiz = {
     
     correctAnswer: function(){
         
+    },
+    
+    youWonPopup: function (){
+        var main = document.getElementById("main");
+        var divPopup = document.createElement("div");
+        divPopup.setAttribute("class", "popup");
+        var h2Popup = document.createElement("h2");
+        var pPopup = document.createElement("p");
+        var button = document.createElement("button");
+        
+        h2Popup.innerHTML = "Grattis, du vann!";
+        pPopup.innerHTML = "Du behövde " + Quiz.numberOfAnswers + " svar för att klara samtliga frågor.";
+        button.innerHTML = "Spela igen!";
+
+        divPopup.appendChild(h2Popup);
+        divPopup.appendChild(pPopup);
+        divPopup.appendChild(button);
+        main.insertBefore(divPopup, main.firstChild);
+        
+        button.onclick = function(){
+            main.removeChild(divPopup);
+            Quiz.numberOfAnswers = 0;
+            Quiz.questionNumber = 1;
+            Quiz.url = "http://vhost3.lnu.se:20080/question/1";
+
+            Quiz.init();
+        };
     },
     
 };
