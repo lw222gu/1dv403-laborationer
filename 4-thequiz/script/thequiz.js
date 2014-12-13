@@ -84,27 +84,27 @@ var Quiz = {
                 Quiz.question = JSON.parse(xhr2.responseText);
                 Quiz.url = Quiz.question.nextURL;
                 
-                Quiz.correctAnswer();
+                if (Quiz.question.nextURL === undefined){
+                    console.log("Spelet slut!");
+                }
+                
+                else {
+                    Quiz.questionNumber++;
+                    Quiz.init();
+                }
             }
             
             else if (xhr2.status === 400) {
                 console.log("Fel!");
             }
-            
-//            else if (xhr2.status === 404){
-//                console.log("Spelet slut!");
-//            }
 
+            document.getElementById("textbox").value = "";
+        
         };
         
     },
     
     correctAnswer: function(){
-        
-        document.getElementById("textbox").value = "";
-        
-        Quiz.questionNumber++;
-        Quiz.init();
         
     },
     
