@@ -69,27 +69,30 @@ body {
 }
 
 .topBar{
-    background-color:gray;
+    background-color:#FFF;
     background-image:url(pics/photos.svg);
     background-size:18px;
     background-position: 5px; 
     background-repeat:no-repeat;
     overflow:auto;
-    height:20px;
+    height:25px;
+    border-bottom:solid;
+    border-color:gray;
+    border-width:1px;
 }
 
 .closeButton{
-    background-image:url(pics/photos.svg);
+    background-image:url(pics/times.svg);
     background-repeat:no-repeat;
-    background-size:18px;
+    background-size:15px;
+    background-position:center center;
+    background-color:#FFF;
     float:right;
+    margin-top:2px;
     width:10%;
     height:20px;
-    border:solid;
-    border-width:1px;
-    border-color:rgb(70, 70, 70);
-    border-radius:2px;
     cursor:pointer;
+    border:none;
 }
 
 .contentPopup{
@@ -97,9 +100,12 @@ body {
 }
 
 .statusBar{
-    height:20px;
+    height:25px;
     position:relative;
-    top:310px;
+    top:298px;
     overflow:auto;
-    background-color:gray;
+    background-color:#FFF;
+    border-top:solid;
+    border-color:gray;
+    border-width:1px;
 }

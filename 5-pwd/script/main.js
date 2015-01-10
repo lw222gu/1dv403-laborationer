@@ -46,6 +46,12 @@ var MyDesktop = {
         photosWindow.appendChild(contentPopup);
         photosWindow.appendChild(statusBar);
         divMain.appendChild(photosWindow);
+        
+        MyDesktop.loadThumbnails();
+    },
+    
+    loadThumbnails: function(){
+        alert("Test!");
     },
 };
 
