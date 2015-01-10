@@ -2,8 +2,28 @@
 
 var MyDesktop = {
     
+    isWindowOpen: false,
+    
     init: function(){
-    //    alert("test");
+        var button = document.getElementById("photosbutton");
+        button.onclick = function(){
+            MyDesktop.openWindow();
+            return false;
+        };
+    },
+    
+    openWindow: function(){
+        if(MyDesktop.isWindowOpen === true){
+            return false;
+        }
+        
+        MyDesktop.isWindowOpen = true;
+        
+        var divMain = document.getElementById("main");
+        var photosWindow = document.createElement("div");
+        photosWindow.className = "popupWindow";
+        photosWindow.innerHTML = "test";
+        divMain.appendChild(photosWindow);
     },
 };
 
