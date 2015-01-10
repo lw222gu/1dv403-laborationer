@@ -1,0 +1,40 @@
+body {
+    font-size: 1em;
+    padding-top:20px;
+    font-family:Arial, sans-serif;
+    background-color:#000;
+}
+
+#container {
+    width: 1024px;
+    height: 720px;
+    margin: 0 auto 0 auto;
+    background-image:url(pics/symphony.png);
+    border-width: 15px;
+    border-color:rgba(155, 155, 155, 0.5);
+    border-radius:4px;
+    border-style:solid;
+    font-family:'Shadows Into Light Two', cursive;
+}
+
+#main {
+    height:720px;
+    width:994px;
+}
+
+#mainheader {
+    padding-left: 30px;
+}
+
+#menubar {
+    width:inherit;
+    height:30px;
+    background-color:rgba(0, 0, 0, 0.6);
+    position:absolute;
+    top:727px;
+    border-width: 3px;
+    border-color:rgba(255, 255, 255, 0.2);
+    border-style:solid;
+    border-left-style:none;
+    border-right-style:none;
+}

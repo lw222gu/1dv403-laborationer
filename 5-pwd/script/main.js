@@ -3,7 +3,7 @@
 var MyDesktop = {
     
     init: function(){
-        alert("test");
+    //    alert("test");
     },
 };
 
