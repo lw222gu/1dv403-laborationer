@@ -7,22 +7,44 @@ var MyDesktop = {
     init: function(){
         var button = document.getElementById("photosbutton");
         button.onclick = function(){
-            MyDesktop.openWindow();
+        
+            if(MyDesktop.isWindowOpen === true){
+                return false;
+            }
+            
+            else{
+                MyDesktop.openWindow();
+            }
+            
             return false;
         };
     },
     
     openWindow: function(){
-        if(MyDesktop.isWindowOpen === true){
-            return false;
-        }
         
         MyDesktop.isWindowOpen = true;
         
         var divMain = document.getElementById("main");
+
         var photosWindow = document.createElement("div");
-        photosWindow.className = "popupWindow";
-        photosWindow.innerHTML = "test";
+        photosWindow.className = "popup";
+
+        var topBar = document.createElement("div");
+        topBar.className = "topBar";
+
+        var closeButton = document.createElement("button");
+        closeButton.className = "closeButton";
+        
+        var contentPopup = document.createElement("div");
+        contentPopup.className = "contentPopup";
+
+        var statusBar = document.createElement("div");
+        statusBar.className = "statusBar";
+            
+        topBar.appendChild(closeButton);
+        photosWindow.appendChild(topBar);
+        photosWindow.appendChild(contentPopup);
+        photosWindow.appendChild(statusBar);
         divMain.appendChild(photosWindow);
     },
 };
