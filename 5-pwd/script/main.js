@@ -40,6 +40,7 @@ var MyDesktop = {
 
         var statusBar = document.createElement("div");
         statusBar.className = "statusBar";
+        statusBar.innerHTML = "Laddar...";
             
         topBar.appendChild(closeButton);
         photosWindow.appendChild(topBar);
@@ -47,11 +48,20 @@ var MyDesktop = {
         photosWindow.appendChild(statusBar);
         divMain.appendChild(photosWindow);
         
+        closeButton.onclick = function(){
+            MyDesktop.closePopup();
+        };
+        
         MyDesktop.loadThumbnails();
     },
     
     loadThumbnails: function(){
         alert("Test!");
+    },
+    
+    closePopup: function(){
+        document.getElementById("main").removeChild(document.querySelector(".popup"));
+        MyDesktop.isWindowOpen = false;
     },
 };
 
