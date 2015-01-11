@@ -6,6 +6,9 @@ var MyDesktop = {
     images: [],
     thumbnailHeights: [],
     thumbnailWidths: [],
+    thumbMaxHeight: "",
+    thumbMaxWidth: "",
+    
     url: "http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/",
     
     init: function(){
@@ -67,16 +70,22 @@ var MyDesktop = {
                 
             if (xhr.readyState === 4 && xhr.status === 200){
                 MyDesktop.images = JSON.parse(xhr.responseText);
-//               Quiz.questionText = Quiz.question.question;
-//               Quiz.generateQuestion(Quiz.questionText);
                 
                 for(var i = 0; i < MyDesktop.images.length; i++){
                     MyDesktop.thumbnailHeights.push(MyDesktop.images[i].thumbHeight);
                     MyDesktop.thumbnailWidths.push(MyDesktop.images[i].thumbWidth);
-
                 }
                 
+                
                 console.log(MyDesktop.thumbnailHeights, MyDesktop.thumbnailWidths);
+                MyDesktop.thumbnailHeights.sort();
+                MyDesktop.thumbnailWidths.sort();
+                
+                MyDesktop.thumbMaxHeight = MyDesktop.thumbnailHeights[MyDesktop.thumbnailHeights.length - 1];
+                MyDesktop.thumbMaxWidth = MyDesktop.thumbnailWidths[MyDesktop.thumbnailWidths.length - 1];
+                
+                console.log(MyDesktop.thumbMaxHeight, MyDesktop.thumbMaxWidth);
+                
                 MyDesktop.createThumbnails();
             }
                 
@@ -87,8 +96,22 @@ var MyDesktop = {
     },
     
     createThumbnails: function(){
-//        var i;
-//        for (i = 0, )
+        
+        for(var i = 0; i < MyDesktop.images.length; i++){
+            var thumbnail = document.createElement("img");
+            thumbnail.className = "thumbnail";
+            
+            var thumbURL = MyDesktop.images[i].thumbURL;
+            console.log(thumbURL);
+            thumbnail.setAttribute("src", thumbURL);
+            thumbnail.setAttribute("height", MyDesktop.thumbMaxHeight + "px");
+            thumbnail.setAttribute("width", MyDesktop.thumbMaxWidth + "px")
+//            thumbnail.style.height = MyDesktop.thumbMaxHeight + "px";
+//            thumbnail.style.width = MyDesktop.thumbMaxWidth + "px";
+
+            var contentPopup = document.querySelector(".contentPopup");
+            contentPopup.appendChild(thumbnail);
+        }
     },
     
     closePopup: function(){

@@ -58,7 +58,8 @@ body {
 }
 
 .popup {
-    width:250px;
+    position:relative;
+    width:270px;
     height:350px;
     overflow:auto;
     background-color:#FFF;
@@ -98,14 +99,20 @@ body {
 }
 
 .contentPopup{
+    height:298px;
+    overflow:auto;
+}
+
+.thumbnail{
     
 }
 
 .statusBar{
     height:19px;
-    position:relative;
-    top:298px;
+    width:264px;
     overflow:auto;
+    position:absolute;
+    bottom:0px;
     background-color:#FFF;
     border-top:solid;
     border-color:gray;
