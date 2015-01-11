@@ -67,6 +67,7 @@ body {
     border-color:rgb(225, 225, 225);
     border-radius:5px;
     margin-left:30px;
+    box-shadow:-3px 3px 10px rgba(50, 50, 50, 0.5);
 }
 
 .topBar{

@@ -3,6 +3,10 @@
 var MyDesktop = {
     
     isWindowOpen: false,
+    images: [],
+    thumbnailHeights: [],
+    thumbnailWidths: [],
+    url: "http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/",
     
     init: function(){
         var button = document.getElementById("photosbutton");
@@ -52,11 +56,39 @@ var MyDesktop = {
             MyDesktop.closePopup();
         };
         
-        MyDesktop.loadThumbnails();
+        MyDesktop.getImages();
     },
     
-    loadThumbnails: function(){
+    getImages: function(){
         alert("Test!");
+        var xhr = new XMLHttpRequest();
+        
+        xhr.onreadystatechange = function(){
+                
+            if (xhr.readyState === 4 && xhr.status === 200){
+                MyDesktop.images = JSON.parse(xhr.responseText);
+//               Quiz.questionText = Quiz.question.question;
+//               Quiz.generateQuestion(Quiz.questionText);
+                
+                for(var i = 0; i < MyDesktop.images.length; i++){
+                    MyDesktop.thumbnailHeights.push(MyDesktop.images[i].thumbHeight);
+                    MyDesktop.thumbnailWidths.push(MyDesktop.images[i].thumbWidth);
+
+                }
+                
+                console.log(MyDesktop.thumbnailHeights, MyDesktop.thumbnailWidths);
+                MyDesktop.createThumbnails();
+            }
+                
+        };
+            
+        xhr.open("GET", MyDesktop.url, true);
+        xhr.send(null);
+    },
+    
+    createThumbnails: function(){
+//        var i;
+//        for (i = 0, )
     },
     
     closePopup: function(){
