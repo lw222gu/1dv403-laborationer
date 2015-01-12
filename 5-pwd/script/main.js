@@ -100,12 +100,16 @@ var MyDesktop = {
     
     createThumbnails: function(){
         
+        var imageNumber = 0;
+        
         for(var i = 0; i < MyDesktop.images.length; i++){
+            
             var thumbnail = document.createElement("img");
             thumbnail.className = "thumbnail";
             
             var aThumbnail = document.createElement("a");
             aThumbnail.setAttribute("href", "#");
+            aThumbnail.setAttribute("id", imageNumber);
 
             var thumbURL = MyDesktop.images[i].thumbURL;
             console.log(thumbURL);
@@ -117,20 +121,21 @@ var MyDesktop = {
             contentPopup.appendChild(aThumbnail);
             
             aThumbnail.onclick = function(){
-                var imageURL = MyDesktop.images[this].URL;
-                console.log(imageURL);
-                MyDesktop.switchBG(imageURL);
+                MyDesktop.switchBG(this.getAttribute("id"));
                 return false;
             };
+            
+            imageNumber++;
         }
         
         document.querySelector(".statusBar").innerHTML = "";
         
     },
     
-    switchBG: function(imageURL){
+    switchBG: function(ID){
+        var imageURL = MyDesktop.images[ID].URL;
         var container = document.getElementById("container");
-        container.setAttribute("style", "background-image:url(pics/symphony.png);");
+        container.setAttribute("style", "background-image:url(" + imageURL + ");");
     },
     
     closePopup: function(){
