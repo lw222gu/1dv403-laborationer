@@ -9,7 +9,6 @@ var MyDesktop = {
     thumbMaxHeight: "",
     thumbMaxWidth: "",
     sheet: document.styleSheets[0],
-    
     url: "http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/",
     
     init: function(){
@@ -46,6 +45,10 @@ var MyDesktop = {
         var closeButton = document.createElement("button");
         closeButton.className = "closeButton";
         
+        closeButton.onclick = function(){
+            MyDesktop.closePopup();
+        };
+        
         var contentPopup = document.createElement("div");
         contentPopup.className = "contentPopup";
 
@@ -59,11 +62,7 @@ var MyDesktop = {
         photosWindow.appendChild(contentPopup);
         photosWindow.appendChild(statusBar);
         divMain.appendChild(photosWindow);
-        
-        closeButton.onclick = function(){
-            MyDesktop.closePopup();
-        };
-        
+    
         MyDesktop.getImages();
     },
     
@@ -88,7 +87,7 @@ var MyDesktop = {
                 
                 MyDesktop.createThumbnails();
             }
-                
+        
         };
             
         xhr.open("GET", MyDesktop.url, true);
