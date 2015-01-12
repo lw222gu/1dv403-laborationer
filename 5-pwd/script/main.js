@@ -8,6 +8,7 @@ var MyDesktop = {
     thumbnailWidths: [],
     thumbMaxHeight: "",
     thumbMaxWidth: "",
+    sheet: document.styleSheets[0],
     
     url: "http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/",
     
@@ -79,15 +80,11 @@ var MyDesktop = {
                     MyDesktop.thumbnailWidths.push(MyDesktop.images[i].thumbWidth);
                 }
                 
-                
-                console.log(MyDesktop.thumbnailHeights, MyDesktop.thumbnailWidths);
                 MyDesktop.thumbnailHeights.sort();
                 MyDesktop.thumbnailWidths.sort();
                 
                 MyDesktop.thumbMaxHeight = MyDesktop.thumbnailHeights[MyDesktop.thumbnailHeights.length - 1];
                 MyDesktop.thumbMaxWidth = MyDesktop.thumbnailWidths[MyDesktop.thumbnailWidths.length - 1];
-                
-                console.log(MyDesktop.thumbMaxHeight, MyDesktop.thumbMaxWidth);
                 
                 MyDesktop.createThumbnails();
             }
@@ -101,7 +98,8 @@ var MyDesktop = {
     createThumbnails: function(){
         
         var imageNumber = 0;
-        
+        MyDesktop.sheet.insertRule(".thumbnailLink {height:" + MyDesktop.thumbMaxHeight + "px; width:" + MyDesktop.thumbMaxWidth + "px;}", 15);
+
         for(var i = 0; i < MyDesktop.images.length; i++){
             
             var thumbnail = document.createElement("img");
@@ -110,11 +108,11 @@ var MyDesktop = {
             var aThumbnail = document.createElement("a");
             aThumbnail.setAttribute("href", "#");
             aThumbnail.setAttribute("id", imageNumber);
+            aThumbnail.setAttribute("class", "thumbnailLink");
+//            aThumbnail.setAttribute("style", "height:" + MyDesktop.thumbMaxHeight + "px; width:" + MyDesktop.thumbMaxWidth + "px;");
 
             var thumbURL = MyDesktop.images[i].thumbURL;
-            console.log(thumbURL);
             thumbnail.setAttribute("src", thumbURL);
-            aThumbnail.setAttribute("style", "height:" + MyDesktop.thumbMaxHeight + "px; width:" + MyDesktop.thumbMaxWidth + "px;");
 
             aThumbnail.appendChild(thumbnail);
             var contentPopup = document.querySelector(".contentPopup");
