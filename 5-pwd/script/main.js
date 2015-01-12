@@ -38,6 +38,9 @@ var MyDesktop = {
 
         var topBar = document.createElement("div");
         topBar.className = "topBar";
+        
+        var topBarText = document.createElement("p");
+        topBarText.innerHTML = "Bakgrundsgalleri";
 
         var closeButton = document.createElement("button");
         closeButton.className = "closeButton";
@@ -48,7 +51,8 @@ var MyDesktop = {
         var statusBar = document.createElement("div");
         statusBar.className = "statusBar";
         statusBar.innerHTML = "Laddar...";
-            
+        
+        topBar.appendChild(topBarText);    
         topBar.appendChild(closeButton);
         photosWindow.appendChild(topBar);
         photosWindow.appendChild(contentPopup);
@@ -63,7 +67,6 @@ var MyDesktop = {
     },
     
     getImages: function(){
-        alert("Test!");
         var xhr = new XMLHttpRequest();
         
         xhr.onreadystatechange = function(){
@@ -101,17 +104,33 @@ var MyDesktop = {
             var thumbnail = document.createElement("img");
             thumbnail.className = "thumbnail";
             
+            var aThumbnail = document.createElement("a");
+            aThumbnail.setAttribute("href", "#");
+
             var thumbURL = MyDesktop.images[i].thumbURL;
             console.log(thumbURL);
             thumbnail.setAttribute("src", thumbURL);
-            thumbnail.setAttribute("height", MyDesktop.thumbMaxHeight + "px");
-            thumbnail.setAttribute("width", MyDesktop.thumbMaxWidth + "px")
-//            thumbnail.style.height = MyDesktop.thumbMaxHeight + "px";
-//            thumbnail.style.width = MyDesktop.thumbMaxWidth + "px";
+            aThumbnail.setAttribute("style", "height:" + MyDesktop.thumbMaxHeight + "px; width:" + MyDesktop.thumbMaxWidth + "px;");
 
+            aThumbnail.appendChild(thumbnail);
             var contentPopup = document.querySelector(".contentPopup");
-            contentPopup.appendChild(thumbnail);
+            contentPopup.appendChild(aThumbnail);
+            
+            aThumbnail.onclick = function(){
+                var imageURL = MyDesktop.images[this].URL;
+                console.log(imageURL);
+                MyDesktop.switchBG(imageURL);
+                return false;
+            };
         }
+        
+        document.querySelector(".statusBar").innerHTML = "";
+        
+    },
+    
+    switchBG: function(imageURL){
+        var container = document.getElementById("container");
+        container.setAttribute("style", "background-image:url(pics/symphony.png);");
     },
     
     closePopup: function(){

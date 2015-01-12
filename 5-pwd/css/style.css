@@ -99,12 +99,31 @@ body {
 }
 
 .contentPopup{
-    height:298px;
+    height:293px;
     overflow:auto;
+    padding-top:5px;
 }
 
 .thumbnail{
-    
+    margin:0 auto 0 auto;
+    display:block;
+}
+
+a{
+    display:inline-block;
+    border:solid;
+    border-width:2px;
+    border-color:rgb(200, 200, 200);
+    margin-left:3px;
+}
+
+.topBar p{
+    font-size:0.7em;
+    position:relative;
+    float:left;
+    margin-left:28px;
+    margin-top:7px;
+    margin-bottom:0px;
 }
 
 .statusBar{
