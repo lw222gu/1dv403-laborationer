@@ -126,6 +126,13 @@ a{
     margin-bottom:0px;
 }
 
+.originalImage a{
+    border:none;
+    font-size:0.7em;
+    margin-bottom:5px;
+    color:grey;
+}
+
 .statusBar{
     height:19px;
     width:264px;

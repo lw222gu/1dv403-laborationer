@@ -128,6 +128,23 @@ var MyDesktop = {
             imageNumber++;
         }
         
+        var originalImage = document.createElement("div");
+        originalImage.className = "originalImage";
+        
+        var a = document.createElement("a");
+        a.setAttribute("href", "#");
+        a.innerHTML = "Byt tillbaka till originalbilden";
+        
+        originalImage.appendChild(a);
+        
+        var content = document.querySelector(".contentPopup");
+        content.appendChild(originalImage);
+        
+        a.onclick = function(){
+            MyDesktop.originalBG();
+            return false;
+        };
+        
         document.querySelector(".statusBar").innerHTML = "";
         
     },
@@ -141,6 +158,11 @@ var MyDesktop = {
     closePopup: function(){
         document.getElementById("main").removeChild(document.querySelector(".popup"));
         MyDesktop.isWindowOpen = false;
+    },
+    
+    originalBG: function(){
+        var container = document.getElementById("container");
+        container.removeAttribute("style");
     },
 };
 
