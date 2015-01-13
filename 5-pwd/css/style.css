@@ -72,6 +72,7 @@ body {
 }
 
 .topBar{
+    position:relative;
     background-color:#FFF;
     background-image:url(pics/photos.svg);
     background-size:18px;
@@ -114,11 +115,15 @@ body {
 }
 
 .thumbnail{
-    margin:0 auto 0 auto;
+    margin: 0 auto 0 auto;
     display:block;
+    position:relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 a{
+    position:relative;
     display:inline-block;
     border:solid;
     border-width:2px;
