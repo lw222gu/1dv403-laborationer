@@ -3,8 +3,8 @@
 var Memory = {
 
     imageArray: [],
-    turnedBricks: [],
-    pairedBricks: [],
+    turnedTiles: [],
+    pairedTiles: [],
     numberOfPairs: 0,
     numberOfTurns: 0,
     numberOfFinishedGames: 0,
@@ -19,7 +19,7 @@ var Memory = {
         Memory.numberOfTurns = 0;
         Memory.numberOfPairs = 0;
         gameTable.innerHTML = "";
-        Memory.pairedBricks = [];
+        Memory.pairedTiles = [];
 
         Memory.createGameArray(Memory.rows, Memory.cols);
     },
@@ -35,7 +35,7 @@ var Memory = {
     //Genererar spelbrädet
     createBoard: function(rows, cols){
         var table = document.querySelector(".memorytable");
-        var brickNumber = 0;
+        var tileNumber = 0;
         var pairs = document.querySelector(".pairs");
         pairs.innerHTML = "Antal par: 0";
 
@@ -51,7 +51,7 @@ var Memory = {
                     var aTile = document.createElement("a");
                     aTile.className = "tilelink";
                     aTile.setAttribute("href", "#");
-                    aTile.setAttribute("id", brickNumber);
+                    aTile.setAttribute("id", tileNumber);
                         
                     var tile = document.createElement("img");
                     tile.className = "tile";
@@ -61,13 +61,13 @@ var Memory = {
                     aTile.appendChild(tile);
                     tileCell.appendChild(aTile);
                     tableRow.appendChild(tileCell);
-                    brickNumber += 1;
+                    tileNumber += 1;
                     
                     //onclick som skickar med första objektet i arrayen samt vilken placering kortet har i arrayen
                     aTile.onclick = function(){
 //                      e.preventDefault();
                        
-                        if (Memory.turnedBricks.length === 2){
+                        if (Memory.turnedTiles.length === 2){
                             return false;
                         }
  
@@ -84,31 +84,31 @@ var Memory = {
     },
     
     //Vänder vald bricka
-    flipTile: function(imageElement, brickNumber){
+    flipTile: function(imageElement, tileNumber){
         
         //Kontrollerar om brickan redan är vänd, och förhindrar klick
-        if(brickNumber === Memory.turnedBricks[Memory.turnedBricks.length-1]){
+        if(tileNumber === Memory.turnedTiles[Memory.turnedTiles.length-1]){
         
             return false;
         }
         
-        for (var i = 0; i < Memory.pairedBricks.length; i++){
+        for (var i = 0; i < Memory.pairedTiles.length; i++){
          
-            if(brickNumber === Memory.pairedBricks[i]){
+            if(tileNumber === Memory.pairedTiles[i]){
                 return false;
             }
         }
         
         //Ger vänd bricka en ny bildlänk
-        var imageID = Memory.imageArray[brickNumber];
+        var imageID = Memory.imageArray[tileNumber];
         imageElement.setAttribute("src", "pics/" + imageID + ".svg");
 
-        Memory.turnedBricks.push(brickNumber);
+        Memory.turnedTiles.push(tileNumber);
 
         var pairs = document.querySelector(".pairs");
  
         //Kontrollerar om antalet vända brickor är två
-        if (Memory.turnedBricks.length === 2){
+        if (Memory.turnedTiles.length === 2){
             
             Memory.compareTiles();
             Memory.numberOfTurns++;
@@ -125,11 +125,11 @@ var Memory = {
  
     //Jämför de vända brickorna
     compareTiles: function(){
-        if (Memory.imageArray[Memory.turnedBricks[0]] === Memory.imageArray[Memory.turnedBricks[1]]){
+        if (Memory.imageArray[Memory.turnedTiles[0]] === Memory.imageArray[Memory.turnedTiles[1]]){
             Memory.numberOfPairs++;
-            Memory.pairedBricks.push(Memory.turnedBricks[0], Memory.turnedBricks[1]);
+            Memory.pairedTiles.push(Memory.turnedTiles[0], Memory.turnedTiles[1]);
  
-            Memory.turnedBricks = [];
+            Memory.turnedTiles = [];
             
         }
         
@@ -143,15 +143,15 @@ var Memory = {
     
     //Vänder tillbaka felaktiga brickor
     flipBackTiles: function(){
-        var brickOne = Memory.turnedBricks[0];
-        var brickOneImage = document.getElementById(brickOne).firstChild;
-        brickOneImage.setAttribute("src", "pics/0.svg");
+        var tileOne = Memory.turnedTiles[0];
+        var tileOneImage = document.getElementById(tileOne).firstChild;
+        tileOneImage.setAttribute("src", "pics/0.svg");
 
-        var brickTwo = Memory.turnedBricks[1];
-        var brickTwoImage = document.getElementById(brickTwo).firstChild;
-        brickTwoImage.setAttribute("src", "pics/0.svg");
+        var tileTwo = Memory.turnedTiles[1];
+        var tileTwoImage = document.getElementById(tileTwo).firstChild;
+        tileTwoImage.setAttribute("src", "pics/0.svg");
 
-        Memory.turnedBricks = [];
+        Memory.turnedTiles = [];
 
     },
     
